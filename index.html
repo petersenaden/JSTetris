@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>The First of Many</title>
+		<button id="button1" type="button" name="barryTheButton">Clickable4</button>
 		<script>
 			var el = document.getElementById("button1");
 			if (el.addEventListener)
@@ -9,10 +10,9 @@
 			else if (el.attachEvent)
 		    el.attachEvent('onclick', clickedButton);
 			function clickedButton() {
-			document.write("barry")
+			document.write(5+6)
 			}
 		</script>
-		<button id="button1" type="button" name="barryTheButton" onclick="document.write(5 + 6)">Clickable3</button>
 
 	</head>
 		<body>
