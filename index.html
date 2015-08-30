@@ -1,8 +1,18 @@
 <!DOCTYPE html>  <!--Used to specify which version of html this uses -->
 <html>
 	<head>
-		<title>Page Title</title>
-		<button type="button">Clickable</button>
+		<title>The First of Many</title>
+		<script>
+			var el = document.getElementById("button1");
+			if (el.addEventListener)
+		    el.addEventListener("click", clickedButton, false);
+			else if (el.attachEvent)
+		    el.attachEvent('onclick', clickedButton);
+			function clickedButton() {
+			window.alert("SUCCESS");
+			}
+		</script>
+		<button id="button1" type="button" name="barryTheButton">Clickable</button>
 
 	</head>
 		<body>
