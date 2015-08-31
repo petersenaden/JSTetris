@@ -8,12 +8,13 @@ h1 {
 }
 
 .outer {
-    width: 960px;
     color: navy;
     background-color: pink;
-    border: 2px solid darkblue;
-    padding: 5px;
     text-align:center;
+    margin: auto;
+    width: 60%;
+    border:3px solid #8AC007;
+    padding: 10px;
  }
 
  hr.style-seven {
