@@ -1,24 +1,25 @@
 <!DOCTYPE html>  <!--Used to specify which version of html this uses -->
 <html>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<head>
 		<title>The First of Many</title>
 		<button id="button1" type="button" name="barryTheButton">Clickable4</button>
 		<script>
 			var el = document.getElementById("button1");
-			if (el.addEventListener)
+			if (el.addEventListener) //Only used to test whether or not addEventListener is supported
 		    el.addEventListener("click", clickedButton, false);
 			else if (el.attachEvent)
 		    el.attachEvent('onclick', clickedButton);
-			function clickedButton() {
-			document.write(5+7)
-			}
+				function clickedButton() {
+					document.write(5+7)
+				}
 		</script>
 
 	</head>
 		<body>
 
-			<h1>This is a Heading</h1>
-				<p>This is a paragraph.</p>
+			<h1>BIG</h1>
+				<p>BALLS</p>
 
 		</body>
 </html>
