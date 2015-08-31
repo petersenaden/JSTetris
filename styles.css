@@ -6,3 +6,11 @@ h1 {
     color: navy;
     margin-left: 20px;
 }
+
+outer {
+    width: 960px;
+    color: navy;
+    background-color: pink;
+    border: 2px solid darkblue;
+    padding: 5px;
+ }
