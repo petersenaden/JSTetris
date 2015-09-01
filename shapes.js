@@ -1,4 +1,33 @@
+//GLOBALS
+var tetrisGrid;
+//GLOBALS
 
+function ActivePiece(type) {
+    this.type = type;
+}
+
+function createTetrisGrid() {
+//0 will correspond to empty, else will be full
+var canvas = document.getElementById("tetrisBoard");
+var width = canvas.width / 100;
+var height = canvas.height / 100;
+tetrisGrid = createMatrix(width, height, 0);
+}
+
+function createMatrix( rows, cols, defaultValue)
+{
+  var arr = [];
+  // Creates all lines:
+  for(var i=0; i < rows; i++){
+      // Creates an empty line
+      arr.push([]);
+      // Adds cols to the empty line:
+      arr[i].push( new Array(cols));
+      for(var j=0; j < cols; j++){
+        // Initializes:
+        arr[i][j] = defaultValue;
+    }
+}
 
 
 function drawBlock(xcoord, ycoord, width, height)
