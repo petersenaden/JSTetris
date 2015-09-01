@@ -19,10 +19,18 @@ function drawSquare()
 
 function drawLeftL()
 {
+	drawBlock(100, 0, 100, 100);
 	drawBlock(200, 0, 100, 100);
 	drawBlock(300, 0, 100, 100);
-	drawBlock(400, 0, 100, 100);
-	drawBlock(400, 100, 100, 100);
+	drawBlock(300, 100, 100, 100);
 }
 
-drawLeftL()
+function drawRightL()
+{
+	drawBlock(100, 0, 100, 100);
+	drawBlock(200, 0, 100, 100);
+	drawBlock(300, 0, 100, 100);
+	drawBlock(100, 100, 100, 100);
+}
+
+drawRightL()
