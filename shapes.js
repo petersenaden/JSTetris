@@ -17,5 +17,3 @@ function drawBlock(xcoord, ycoord, width, height)
 	ctx.rect(xcoord, ycoord, width, height);
 	ctx.stroke(); //Actually draws what has been defined
 }
-
-drawBlock(0,0,100,100);
