@@ -9,8 +9,6 @@ function drawBlock(xcoord, ycoord, width, height)
 	ctx.stroke(); //Actually draws what has been defined
 }
 
-
-
 function drawSquare()
 {
 	drawBlock(200, 0, 100, 100);
@@ -19,4 +17,12 @@ function drawSquare()
 	drawBlock(300, 100, 100, 100);
 }
 
-drawSquare()
+function drawLeftL()
+{
+	drawBlock(200, 0, 100, 100);
+	drawBlock(300, 0, 100, 100);
+	drawBlock(400, 0, 100, 100);
+	drawBlock(400, 100, 100, 100);
+}
+
+drawLeftL()
