@@ -2,8 +2,38 @@
 var tetrisGrid;
 //GLOBALS
 
-function ActivePiece(type) {
+function sqr() {
+	this.topl = [0,0];
+	this.topr = [0,0];
+	this.btml = [0,0];
+	this.btmr = [0,0];
+}
+
+function leftl() {
+	this.topbl = [0,0];
+	this.mid = [0,0];
+	this.bot = [0,0];
+	this.tail = [0,0];
+}
+
+function rightl() {
+	this.topbl = [0,0];
+	this.mid = [0,0];
+	this.bot = [0,0];
+	this.tail = [0,0];
+}
+
+function ActivePiece() {
     this.type = type;
+    if (this.type === "sqr") {
+    	activePiece = sqr();
+    }
+    else if (this.type === "leftl") {
+    	activePiece = leftl();
+    }
+    else if (this.type === "rightl") {
+    	activePiece = rightl();
+    }
 }
 
 function createTetrisGrid() {
