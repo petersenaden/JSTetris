@@ -15,6 +15,7 @@ function sqr() {
 		drawBlock(width + 100, 0);
 		drawBlock(width, 100);
 		drawBlock(width + 100, 100);
+		alert("hi");
 	}
 }
 
@@ -94,6 +95,6 @@ function drawBlock(xcoord, ycoord)
 	ctx.stroke(); //Actually draws what has been defined
 }
 
-createTetrisGrid();
-activePiece1 = activePiece(0);
+//createTetrisGrid();
+activePiece1 = ActivePiece(0);
 activePiece1.drawSquareTop();
