@@ -115,4 +115,4 @@ function drawBlock(xcoord, ycoord)
 createTetrisGrid();
 var activePiece1 = new ActivePiece(0);
 activePiece1.activePiece.drawSquareTop();
-plotMatrix();
+//plotMatrix();
