@@ -94,12 +94,11 @@ function plotMatrix() {
 	var canvas = document.getElementById(boardName);
 	for (var i = 0; i < canvas.width / 100; i++) {
 		for (var j = 0; i < canvas.height / 100; j++) {
-			if (tetrisGrid[i][j] == 1) {
-				drawBlock(i*100, j*100);
-			}
+			//if (tetrisGrid[i][j] == 1) {
+			//	drawBlock(i*100, j*100);
+			//}
 		}
 	}
-
 }
 
 function drawBlock(xcoord, ycoord)
