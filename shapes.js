@@ -8,7 +8,7 @@ function sqr() {
 	this.topr = [0,0];
 	this.btml = [0,0];
 	this.btmr = [0,0];
-	drawSquareTop : function() {
+	this.drawSquareTop = function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
 		drawBlock(width, 0);
