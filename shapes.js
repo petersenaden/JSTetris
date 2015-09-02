@@ -8,7 +8,7 @@ function sqr() {
 	this.topr = [0,0];
 	this.btml = [0,0];
 	this.btmr = [0,0];
-	drawSquareTop = function() {
+	drawSquareTop : function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
 		drawBlock(width, 0);
@@ -96,5 +96,5 @@ function drawBlock(xcoord, ycoord)
 }
 
 //createTetrisGrid();
-var activePiece1 = ActivePiece(0);
+var activePiece1 = new ActivePiece(0);
 sqr.drawSquareTop();
