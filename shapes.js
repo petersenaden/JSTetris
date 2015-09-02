@@ -15,7 +15,6 @@ function sqr() {
 		drawBlock(width + 100, 0);
 		drawBlock(width, 100);
 		drawBlock(width + 100, 100);
-		console.log("hey");
 	}
 }
 
@@ -52,6 +51,7 @@ function rightl() {
 function ActivePiece(type) {
     this.type = type;
     if (this.type == 0) {
+    	console.log("hey");
     	this.activePiece = sqr();
     }
     else if (this.type == 1) {
