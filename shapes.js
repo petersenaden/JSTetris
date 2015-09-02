@@ -97,4 +97,4 @@ function drawBlock(xcoord, ycoord)
 
 //createTetrisGrid();
 activePiece1 = ActivePiece(0);
-activePiece1.drawSquareTop();
+activePiece1.activePiece.drawSquareTop();
