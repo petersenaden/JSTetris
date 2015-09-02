@@ -8,7 +8,7 @@ function sqr() {
 	this.topr = [0,0];
 	this.btml = [0,0];
 	this.btmr = [0,0];
-	this.drawSquareTop = function() {
+	drawSquareTop = function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
 		drawBlock(width, 0);
@@ -51,7 +51,6 @@ function rightl() {
 function ActivePiece(type) {
     this.type = type;
     if (this.type == 0) {
-    	console.log("hey");
     	this.activePiece = sqr();
     }
     else if (this.type == 1) {
