@@ -15,10 +15,10 @@ function sqr() {
 		//drawBlock(width + 100, 0);
 		//drawBlock(width, 100);
 		//drawBlock(width + 100, 100);
-		tetrisBoard[width/100][0] = 1;
-		tetrisBoard[(width/100)+1][0] = 1;
-		tetrisBoard[width/100][0] = 1;
-		tetrisBoard[(width/100)+1][1] = 1;
+		tetrisGrid[width/100][0] = 1;
+		tetrisGrid[(width/100)+1][0] = 1;
+		tetrisGrid[width/100][0] = 1;
+		tetrisGrid[(width/100)+1][1] = 1;
 	}
 }
 
