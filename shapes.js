@@ -82,7 +82,8 @@ function createMatrix( rows, cols, defaultValue)
       for(var j=0; j < cols; j++){
         // Initializes:
         arr[i][j] = defaultValue;
-    }
+    	}
+	}
 }
 
 function drawBlock(xcoord, ycoord)
