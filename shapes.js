@@ -24,21 +24,19 @@ function sqr() {
 	}
 
 	this.dropSquareOne = function() {
+		//Set the block's current blocks to empty
 		tetrisGrid[this.one[0]][this.one[1]] = 0;
 		tetrisGrid[this.two[0]][this.two[1]] = 0;
 		tetrisGrid[this.three[0]][this.three[1]] = 0;
 		tetrisGrid[this.four[0]][this.four[1]] = 0;
 
-		tetrisGrid[this.one[0]][this.one[1]] = 1;
-		tetrisGrid[this.two[0]][this.two[1]] = 1;
-		tetrisGrid[this.three[0]][this.three[1]] = 1;
-		tetrisGrid[this.four[0]][this.four[1]] = 1;
+		//Drop the block down a piece for each block
+		tetrisGrid[this.one[0]][this.one[1]+1] = 1;
+		tetrisGrid[this.two[0]][this.two[1]+1] = 1;
+		tetrisGrid[this.three[0]][this.three[1]+1] = 1;
+		tetrisGrid[this.four[0]][this.four[1]+1] = 1;
 
-		//tetrisGrid[this.one[0]][this.one[1]+1] = 1;
-		//tetrisGrid[this.two[0]][this.two[1]+1] = 1;
-		//tetrisGrid[this.three[0]][this.three[1]+1] = 1;
-		//tetrisGrid[this.four[0]][this.four[1]+1] = 1;
-
+		//Back up the block's configuration
 		this.one = [this.one[0],this.one[1]+1];
 		this.two = [this.two[0],this.two[1]+1];
 		this.three = [this.three[0],this.three[1]+1];
@@ -147,7 +145,7 @@ function drawBlock(xcoord, ycoord)
 createTetrisGrid();
 var activePiece1 = new ActivePiece(0);
 activePiece1.activePiece.drawRightLTop();
-plotMatrix();
-clearGrid();
+//plotMatrix();
+//clearGrid();
 activePiece1.activePiece.dropSquareOne();
 plotMatrix();
