@@ -4,25 +4,29 @@ var boardName = "tetrisBoard"
 //GLOBALS
 
 function sqr() {
-	this.topl = [0,0];
-	this.topr = [0,0];
-	this.btml = [0,0];
-	this.btmr = [0,0];
+	this.one = [0,0];
+	this.two = [0,0];
+	this.three = [0,0];
+	this.four = [0,0];
 	this.drawSquareTop = function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
-		drawBlock(width, 0);
-		drawBlock(width + 100, 0);
-		drawBlock(width, 100);
-		drawBlock(width + 100, 100);
+		//drawBlock(width, 0);
+		//drawBlock(width + 100, 0);
+		//drawBlock(width, 100);
+		//drawBlock(width + 100, 100);
+		this.one = [width/100,0];
+		this.two = [(width/100)+1,0];
+		this.three = [width/100,0];
+		this.four = [(width/100)+1,1];
 	}
 }
 
 function leftl() {
-	this.topbl = [0,0];
-	this.mid = [0,0];
-	this.bot = [0,0];
-	this.tail = [0,0];
+	this.one = [0,0];
+	this.two = [0,0];
+	this.three = [0,0];
+	this.four = [0,0];
 	this.drawLeftLTop = function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
@@ -34,10 +38,10 @@ function leftl() {
 }
 
 function rightl() {
-	this.topbl = [0,0];
-	this.mid = [0,0];
-	this.bot = [0,0];
-	this.tail = [0,0];
+	this.one = [0,0];
+	this.two = [0,0];
+	this.three = [0,0];
+	this.four = [0,0];
 	this.drawRightLTop = function() {
 		var canvas = document.getElementById(boardName);
 		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
@@ -62,27 +66,38 @@ function ActivePiece(type) {
 }
 
 function createTetrisGrid() {
-//0 will correspond to empty, else will be full
-var canvas = document.getElementById(boardName);
-var width = canvas.width / 100;
-var height = canvas.height / 100;
-tetrisGrid = createMatrix(width, height, 0);
+	//0 will correspond to empty, else will be full
+	var canvas = document.getElementById(boardName);
+	var width = canvas.width / 100;
+	var height = canvas.height / 100;
+	tetrisGrid = createMatrix(width, height, 0);
 }
 
 function createMatrix( rows, cols, defaultValue)
 {
-  var arr = [];
-  // Creates all lines:
-  for(var i=0; i < rows; i++){
-      // Creates an empty line
-      arr.push([]);
-      // Adds cols to the empty line:
-      arr[i].push( new Array(cols));
-      for(var j=0; j < cols; j++){
-        // Initializes:
-        arr[i][j] = defaultValue;
-    	}
+	var arr = [];
+	// Creates all lines:
+	for(var i=0; i < rows; i++){
+		// Creates an empty line
+		arr.push([]);
+		// Adds cols to the empty line:
+		arr[i].push( new Array(cols));
+		for(var j=0; j < cols; j++){
+			// Initializes:
+			arr[i][j] = defaultValue;
+		}
 	}
+}
+
+function plotMatrix() {
+	for (var i = 0; i < canvas.width / 100; i++) {
+		for (var j = 0; i < canvas.width / 100; i++) {
+			if (tetrisGrid[i][j] == 1) {
+				drawBlock(i*100, j*100);
+			}
+		}
+	}
+
 }
 
 function drawBlock(xcoord, ycoord)
@@ -98,3 +113,4 @@ function drawBlock(xcoord, ycoord)
 //createTetrisGrid();
 var activePiece1 = new ActivePiece(0);
 activePiece1.activePiece.drawSquareTop();
+plotMatrix();
