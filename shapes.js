@@ -51,13 +51,13 @@ function rightl() {
 function ActivePiece(type) {
     this.type = type;
     if (this.type == 0) {
-    	this.activePiece = sqr();
+    	this.activePiece = new sqr();
     }
     else if (this.type == 1) {
-    	this.activePiece = leftl();
+    	this.activePiece = new leftl();
     }
     else if (this.type == 2) {
-    	this.activePiece = rightl();
+    	this.activePiece = new rightl();
     }
 }
 
@@ -96,5 +96,5 @@ function drawBlock(xcoord, ycoord)
 }
 
 //createTetrisGrid();
-var barry = new sqr(0);
-barry.drawSquareTop();
+var activePiece1 = new ActivePiece(0);
+activePiece1.activePiece.drawSquareTop();
