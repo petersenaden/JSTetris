@@ -17,7 +17,7 @@ function sqr() {
 		//drawBlock(width + 100, 100);
 		tetrisGrid[width/100][0] = 1;
 		tetrisGrid[(width/100)+1][0] = 1;
-		tetrisGrid[width/100][0] = 1;
+		tetrisGrid[width/100][1] = 1;
 		tetrisGrid[(width/100)+1][1] = 1;
 	}
 }
