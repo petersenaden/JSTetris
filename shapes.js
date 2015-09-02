@@ -15,10 +15,10 @@ function sqr() {
 		//drawBlock(width + 100, 0);
 		//drawBlock(width, 100);
 		//drawBlock(width + 100, 100);
-		this.one = [width/100,0];
-		this.two = [(width/100)+1,0];
-		this.three = [width/100,0];
-		this.four = [(width/100)+1,1];
+		//this.one = [width/100,0];
+		//this.two = [(width/100)+1,0];
+		//this.three = [width/100,0];
+		//this.four = [(width/100)+1,1];
 	}
 }
 
@@ -111,7 +111,7 @@ function drawBlock(xcoord, ycoord)
 	ctx.stroke(); //Actually draws what has been defined
 }
 
-//createTetrisGrid();
+createTetrisGrid();
 var activePiece1 = new ActivePiece(0);
 activePiece1.activePiece.drawSquareTop();
 plotMatrix();
