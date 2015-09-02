@@ -144,8 +144,8 @@ function drawBlock(xcoord, ycoord)
 
 createTetrisGrid();
 var activePiece1 = new ActivePiece(0);
-activePiece1.activePiece.drawRightLTop();
-//plotMatrix();
-//clearGrid();
+activePiece1.activePiece.drawSquareTop();
+plotMatrix();
+clearGrid();
 activePiece1.activePiece.dropSquareOne();
 plotMatrix();
