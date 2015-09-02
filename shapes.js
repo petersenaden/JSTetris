@@ -87,6 +87,7 @@ function createMatrix( rows, cols, defaultValue)
 			arr[i][j] = defaultValue;
 		}
 	}
+	return arr;
 }
 
 function plotMatrix() {
