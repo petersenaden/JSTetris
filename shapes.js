@@ -52,13 +52,13 @@ function rightl() {
 function ActivePiece(type) {
     this.type = type;
     if (this.type == 0) {
-    	activePiece = sqr();
+    	this.activePiece = sqr();
     }
     else if (this.type == 1) {
-    	activePiece = leftl();
+    	this.activePiece = leftl();
     }
     else if (this.type == 2) {
-    	activePiece = rightl();
+    	this.activePiece = rightl();
     }
 }
 
