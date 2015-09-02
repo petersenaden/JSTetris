@@ -1,6 +1,8 @@
 //GLOBALS
 var tetrisGrid;
 var boardName = "tetrisBoard"
+var canvas = document.getElementById(boardName);
+var context = canvas.getContext("2d");
 //GLOBALS
 
 function sqr() {
@@ -8,13 +10,41 @@ function sqr() {
 	this.two = [0,0];
 	this.three = [0,0];
 	this.four = [0,0];
+
 	this.drawSquareTop = function() {
-		var canvas = document.getElementById(boardName);
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
 		tetrisGrid[width][0] = 1;
 		tetrisGrid[width+1][0] = 1;
 		tetrisGrid[width][1] = 1;
 		tetrisGrid[width+1][1] = 1;
+		this.one = [width,0];
+		this.two = [width+1,0];
+		this.three = [width,1];
+		this.four = [width+1,1];
+	}
+
+	this.dropSquareOne = function() {
+		tetrisGrid[this.one[0]][this.one[1]] = 0;
+		tetrisGrid[this.two[0]][this.two[1]] = 0;
+		tetrisGrid[this.three[0]][this.three[1]] = 0;
+		tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+		tetrisGrid[this.one[0]][this.one[1]] = 1;
+		tetrisGrid[this.two[0]][this.two[1]] = 1;
+		tetrisGrid[this.three[0]][this.three[1]] = 1;
+		tetrisGrid[this.four[0]][this.four[1]] = 1;
+
+		//tetrisGrid[this.one[0]][this.one[1]+1] = 1;
+		//tetrisGrid[this.two[0]][this.two[1]+1] = 1;
+		//tetrisGrid[this.three[0]][this.three[1]+1] = 1;
+		//tetrisGrid[this.four[0]][this.four[1]+1] = 1;
+
+		this.one = [this.one[0],this.one[1]+1];
+		this.two = [this.two[0],this.two[1]+1];
+		this.three = [this.three[0],this.three[1]+1];
+		this.four = [this.four[0],this.four[1]+1];
+
+
 	}
 }
 
@@ -24,12 +54,15 @@ function leftl() {
 	this.three = [0,0];
 	this.four = [0,0];
 	this.drawLeftLTop = function() {
-		var canvas = document.getElementById(boardName);
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
 		tetrisGrid[width][0] = 1;
 		tetrisGrid[width+1][0] = 1;
 		tetrisGrid[width+2][0] = 1;
 		tetrisGrid[width+2][1] = 1;
+		this.one = [width,0];
+		this.two = [width+1,0];
+		this.three = [width+2,1];
+		this.four = [width+2,1];
 	}
 }
 
@@ -39,12 +72,15 @@ function rightl() {
 	this.three = [0,0];
 	this.four = [0,0];
 	this.drawRightLTop = function() {
-		var canvas = document.getElementById(boardName);
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
 		tetrisGrid[width][0] = 1;
 		tetrisGrid[width+1][0] = 1;
 		tetrisGrid[width+2][0] = 1;
 		tetrisGrid[width][1] = 1;
+		this.one = [width,0];
+		this.two = [width+1,0];
+		this.three = [width+2,0];
+		this.four = [width,1];
 	}
 }
 
@@ -63,7 +99,6 @@ function ActivePiece(type) {
 
 function createTetrisGrid() {
 	//0 will correspond to empty, else will be full
-	var canvas = document.getElementById(boardName);
 	var width = canvas.width / 100;
 	var height = canvas.height / 100;
 	tetrisGrid = createMatrix(width, height, 0);
@@ -86,8 +121,12 @@ function createMatrix( rows, cols, defaultValue)
 	return arr;
 }
 
+function clearGrid() {
+	context.beginPath();
+	context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 function plotMatrix() {
-	var canvas = document.getElementById(boardName);
 	for (var i = 0; i < canvas.width / 100; i++) {
 		for (var j = 0; j < canvas.height / 100; j++) {
 			if (tetrisGrid[i][j] == 1) {
@@ -101,13 +140,14 @@ function drawBlock(xcoord, ycoord)
 {
 	var blockWidth = 100;
 	var blockHeight = 100;
-	var c=document.getElementById(boardName);
-	var ctx=c.getContext("2d");
-	ctx.rect(xcoord, ycoord, blockWidth, blockHeight);
-	ctx.stroke(); //Actually draws what has been defined
+	context.rect(xcoord, ycoord, blockWidth, blockHeight);
+	context.stroke(); //Actually draws what has been defined
 }
 
 createTetrisGrid();
-var activePiece1 = new ActivePiece(2);
+var activePiece1 = new ActivePiece(0);
 activePiece1.activePiece.drawRightLTop();
+plotMatrix();
+clearGrid();
+activePiece1.activePiece.dropSquareOne();
 plotMatrix();
