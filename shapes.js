@@ -90,6 +90,7 @@ function createMatrix( rows, cols, defaultValue)
 }
 
 function plotMatrix() {
+	var canvas = document.getElementById(boardName);
 	for (var i = 0; i < canvas.width / 100; i++) {
 		for (var j = 0; i < canvas.width / 100; i++) {
 			if (tetrisGrid[i][j] == 1) {
