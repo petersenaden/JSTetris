@@ -10,15 +10,11 @@ function sqr() {
 	this.four = [0,0];
 	this.drawSquareTop = function() {
 		var canvas = document.getElementById(boardName);
-		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
-		//drawBlock(width, 0);
-		//drawBlock(width + 100, 0);
-		//drawBlock(width, 100);
-		//drawBlock(width + 100, 100);
-		tetrisGrid[width/100][0] = 1;
-		tetrisGrid[(width/100)+1][0] = 1;
-		tetrisGrid[width/100][1] = 1;
-		tetrisGrid[(width/100)+1][1] = 1;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
+		tetrisGrid[width][0] = 1;
+		tetrisGrid[width+1][0] = 1;
+		tetrisGrid[width][1] = 1;
+		tetrisGrid[width+1][1] = 1;
 	}
 }
 
@@ -29,11 +25,12 @@ function leftl() {
 	this.four = [0,0];
 	this.drawLeftLTop = function() {
 		var canvas = document.getElementById(boardName);
-		var width = canvas.width / 2 - ((canvas.width / 2) % 100);
-		drawBlock(width, 0);
-		drawBlock(width + 100, 0);
-		drawBlock(width + 200, 0);
-		drawBlock(width + 200, 100);
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
+
+		tetrisGrid[width][0] = 1;
+		tetrisGrid[width+1][0] = 1;
+		tetrisGrid[width+2][0] = 1;
+		tetrisGrid[width+2][1] = 1;
 	}
 }
 
@@ -112,6 +109,6 @@ function drawBlock(xcoord, ycoord)
 }
 
 createTetrisGrid();
-var activePiece1 = new ActivePiece(0);
+var activePiece1 = new ActivePiece(1);
 activePiece1.activePiece.drawSquareTop();
 plotMatrix();
