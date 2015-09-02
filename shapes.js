@@ -96,5 +96,5 @@ function drawBlock(xcoord, ycoord)
 }
 
 //createTetrisGrid();
-activePiece1 = ActivePiece(0);
+var activePiece1 = ActivePiece(0);
 sqr.drawSquareTop();
