@@ -47,20 +47,24 @@ function sqr() {
 }
 
 function leftl() {
-	this.one = [0,0];
+	this.one = [0,0]; //
 	this.two = [0,0];
 	this.three = [0,0];
 	this.four = [0,0];
+	//0 - upright, 1 - 90 right
+	//2 - upside down, 3 - 90 left
+
 	this.drawLeftLTop = function() {
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
 		tetrisGrid[width][0] = 1;
 		tetrisGrid[width+1][0] = 1;
 		tetrisGrid[width+2][0] = 1;
 		tetrisGrid[width+2][1] = 1;
-		this.one = [width,0];
-		this.two = [width+1,0];
-		this.three = [width+2,1];
-		this.four = [width+2,1];
+		this.one = [width,0]; //top of piece
+		this.two = [width+1,0]; //middle piece - rotated around
+		this.three = [width+2,0]; //bottom piece
+		this.four = [width+2,1]; //tail
+		this.orientation = 3;
 	}
 
 	this.dropLeftLOne = function() {
@@ -85,6 +89,92 @@ function leftl() {
 
 	}
 
+	this.rotateLeftLLeftOne = function() {
+		if (this.orientation == 0) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]-1][this.one[1]+1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]+1][this.three[1]-1] = 1;
+			tetrisGrid[this.four[0]+2][this.four[1]] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]-1,this.one[1]+1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]+1,this.three[1]-1];
+			this.four = [this.four[0]+2,this.four[1]];
+
+			this.orientation = 3;
+
+
+		} else if (this.orientation == 1) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]-1][this.one[1]-1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]+1][this.three[1]+1] = 1;
+			tetrisGrid[this.four[0]][this.four[1]+2] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]-1,this.one[1]-1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]+1,this.three[1]+1];
+			this.four = [this.four[0],this.four[1]+2];
+
+			this.orientation = 0;
+
+		}
+		else if (this.orientation == 2) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]+1][this.one[1]-1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]-1][this.three[1]+1] = 1;
+			tetrisGrid[this.four[0]-2][this.four[1]] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]+1,this.one[1]-1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]-1,this.three[1]+1];
+			this.four = [this.four[0]-2,this.four[1]];
+
+			this.orientation = 1;
+
+		}
+		else if (this.orientation == 3) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]+1][this.one[1]+1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]-1][this.three[1]-1] = 1;
+			tetrisGrid[this.four[0]][this.four[1]-2] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]+1,this.one[1]+1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]-1,this.three[1]-1];
+			this.four = [this.four[0],this.four[1]-2];
+
+			this.orientation = 2;
+		}
+	}
+
 }
 
 function rightl() {
@@ -92,6 +182,9 @@ function rightl() {
 	this.two = [0,0];
 	this.three = [0,0];
 	this.four = [0,0];
+	this.orientation = 1;
+	//0 - upright, 1 - 90 right
+	//2 - upside down, 3 - 90 left
 
 	this.drawRightLTop = function() {
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
@@ -99,10 +192,11 @@ function rightl() {
 		tetrisGrid[width+1][0] = 1;
 		tetrisGrid[width+2][0] = 1;
 		tetrisGrid[width][1] = 1;
-		this.one = [width,0];
+		this.one = [width+2,0];
 		this.two = [width+1,0];
-		this.three = [width+2,0];
+		this.three = [width,0];
 		this.four = [width,1];
+		this.orientation = 1;
 	}
 
 	this.dropRightLOne = function() {
@@ -123,8 +217,92 @@ function rightl() {
 		this.two = [this.two[0],this.two[1]+1];
 		this.three = [this.three[0],this.three[1]+1];
 		this.four = [this.four[0],this.four[1]+1];
+	}
+
+	this.rotateRightLLeftOne = function() {
+		if (this.orientation == 0) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]-1][this.one[1]+1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]+1][this.three[1]-1] = 1;
+			tetrisGrid[this.four[0]][this.four[1]-2] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]-1,this.one[1]+1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]+1,this.three[1]-1];
+			this.four = [this.four[0],this.four[1]-2];
+
+			this.orientation = 3;
 
 
+		} else if (this.orientation == 1) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]-1][this.one[1]-1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]+1][this.three[1]+1] = 1;
+			tetrisGrid[this.four[0]+2][this.four[1]] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]-1,this.one[1]-1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]+1,this.three[1]+1];
+			this.four = [this.four[0]+2,this.four[1]];
+
+			this.orientation = 0;
+
+		}
+		else if (this.orientation == 2) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]+1][this.one[1]-1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]-1][this.three[1]+1] = 1;
+			tetrisGrid[this.four[0]][this.four[1]+2] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]+1,this.one[1]-1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]-1,this.three[1]+1];
+			this.four = [this.four[0],this.four[1]+2];
+
+			this.orientation = 1;
+
+		}
+		else if (this.orientation == 3) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
+			//Drop the block down a piece for each block
+			tetrisGrid[this.one[0]+1][this.one[1]+1] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]-1][this.three[1]-1] = 1;
+			tetrisGrid[this.four[0]-2][this.four[1]] = 1;
+
+			//Back up the block's configuration
+			this.one = [this.one[0]+1,this.one[1]+1];
+			this.two = [this.two[0],this.two[1]];
+			this.three = [this.three[0]-1,this.three[1]-1];
+			this.four = [this.four[0]-2,this.four[1]];
+
+			this.orientation = 2;
+		}
 	}
 }
 
@@ -189,13 +367,15 @@ function drawBlock(xcoord, ycoord)
 }
 
 createTetrisGrid();
-var activePiece1 = new ActivePiece(0);
-activePiece1.activePiece.drawSquareTop();
+var activePiece1 = new ActivePiece(2);
+activePiece1.activePiece.drawRightLTop();
 plotMatrix();
 clearGrid();
-activePiece1.activePiece.dropSquareOne();
-activePiece1.activePiece.dropSquareOne();
-activePiece1.activePiece.dropSquareOne();
-activePiece1.activePiece.dropSquareOne();
-activePiece1.activePiece.dropSquareOne();
+activePiece1.activePiece.dropRightLOne();
+activePiece1.activePiece.dropRightLOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
 plotMatrix();
