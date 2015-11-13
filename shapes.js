@@ -14,7 +14,6 @@ function detectCollision(one, two, three, four) {
 		return 1;
 	}
 	if (tetrisGrid[three[0]][three[1]] != 0) {
-		console.log("hi");
 		return 1;
 	}
 	if (tetrisGrid[four[0]][four[1]] != 0) {
@@ -69,9 +68,14 @@ function sqr() {
 			this.four = [width+1,1];
 		}
 	}
-
+	//fixed for collision
 	this.dropSquareOne = function() {
 		//detect collision
+		tetrisGrid[this.one[0]][this.one[1]] = 0;
+		tetrisGrid[this.two[0]][this.two[1]] = 0;
+		tetrisGrid[this.three[0]][this.three[1]] = 0;
+		tetrisGrid[this.four[0]][this.four[1]] = 0;
+
 		if (detectCollision([this.one[0], this.one[1]+1],
 							[[this.two[0], this.two[1]+1]],
 							[[this.three[0], this.three[1]+1]],
@@ -94,6 +98,11 @@ function sqr() {
 		this.two = [this.two[0],this.two[1]+1];
 		this.three = [this.three[0],this.three[1]+1];
 		this.four = [this.four[0],this.four[1]+1];
+		} else {
+		tetrisGrid[this.one[0]][this.one[1]] = 1;
+		tetrisGrid[this.two[0]][this.two[1]] = 1;
+		tetrisGrid[this.three[0]][this.three[1]] = 1;
+		tetrisGrid[this.four[0]][this.four[1]] = 1;
 		}
 	}
 }
@@ -127,6 +136,12 @@ function leftl() {
 
 	this.dropLeftLOne = function() {
 		//detect collision
+
+		tetrisGrid[this.one[0]][this.one[1]] = 0;
+		tetrisGrid[this.two[0]][this.two[1]] = 0;
+		tetrisGrid[this.three[0]][this.three[1]] = 0;
+		tetrisGrid[this.four[0]][this.four[1]] = 0;
+
 		if (detectCollision([this.one[0], this.one[1]+1],
 							[this.two[0], this.two[1]+1],
 							[this.three[0], this.three[1]+1],
@@ -149,11 +164,21 @@ function leftl() {
 		this.two = [this.two[0],this.two[1]+1];
 		this.three = [this.three[0],this.three[1]+1];
 		this.four = [this.four[0],this.four[1]+1];
+		} else {
+		tetrisGrid[this.one[0]][this.one[1]] = 1;
+		tetrisGrid[this.two[0]][this.two[1]] = 1;
+		tetrisGrid[this.three[0]][this.three[1]] = 1;
+		tetrisGrid[this.four[0]][this.four[1]] = 1;
 		}
 	}
 
 	this.rotateLeftLLeftOne = function() {
 		if (this.orientation == 0) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
 			if (detectCollision([this.one[0]-1, this.one[1]+1],
 							[this.two[0], this.two[1]],
 							[this.three[0]+1, this.three[1]-1],
@@ -176,10 +201,21 @@ function leftl() {
 				this.four = [this.four[0]+2,this.four[1]];
 
 				this.orientation = 3;
+			} else {
+				tetrisGrid[this.one[0]][this.one[1]] = 1;
+				tetrisGrid[this.two[0]][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 
 
 		} else if (this.orientation == 1) {
+
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
+
 			if (detectCollision([this.one[0]-1, this.one[1]-1],
 							[this.two[0], this.two[1]],
 							[this.three[0]+1, this.three[1]+1],
@@ -202,10 +238,20 @@ function leftl() {
 				this.four = [this.four[0],this.four[1]+2];
 
 				this.orientation = 0;
+			} else {
+				tetrisGrid[this.one[0]][this.one[1]] = 1;
+				tetrisGrid[this.two[0]][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 
 		}
 		else if (this.orientation == 2) {
+			tetrisGrid[this.one[0]][this.one[1]] = 0;
+			tetrisGrid[this.two[0]][this.two[1]] = 0;
+			tetrisGrid[this.three[0]][this.three[1]] = 0;
+			tetrisGrid[this.four[0]][this.four[1]] = 0;
+
 			if (detectCollision([this.one[0]+1, this.one[1]-1],
 							[this.two[0], this.two[1]],
 							[this.three[0]-1, this.three[1]+1],
@@ -228,10 +274,19 @@ function leftl() {
 				this.four = [this.four[0]-2,this.four[1]];
 
 				this.orientation = 1;
+				} else {
+				tetrisGrid[this.one[0]][this.one[1]] = 1;
+				tetrisGrid[this.two[0]][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]] = 1;
 				}
 
 		}
 		else if (this.orientation == 3) {
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
 			if (detectCollision([this.one[0]+1, this.one[1]+1],
 							[this.two[0], this.two[1]],
 							[this.three[0]-1, this.three[1]-1],
@@ -254,6 +309,12 @@ function leftl() {
 				this.four = [this.four[0],this.four[1]-2];
 
 				this.orientation = 2;
+			} else {
+			tetrisGrid[this.one[0]][this.one[1]] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]][this.three[1]] = 1;
+			tetrisGrid[this.four[0]][this.four[1]] = 1;
+
 			}
 		}
 	}
@@ -289,6 +350,10 @@ function rightl() {
 
 	this.dropRightLOne = function() {
 		//detect collision
+		tetrisGrid[this.one[0]][this.one[1]] = 0;
+		tetrisGrid[this.two[0]][this.two[1]] = 0;
+		tetrisGrid[this.three[0]][this.three[1]] = 0;
+		tetrisGrid[this.four[0]][this.four[1]] = 0;
 		if (detectCollision([this.one[0], this.one[1]+1],
 							[this.two[0], this.two[1]+1],
 							[this.three[0], this.three[1]+1],
@@ -311,12 +376,21 @@ function rightl() {
 		this.two = [this.two[0],this.two[1]+1];
 		this.three = [this.three[0],this.three[1]+1];
 		this.four = [this.four[0],this.four[1]+1];
+		} else {
+		tetrisGrid[this.one[0]][this.one[1]] = 1;
+		tetrisGrid[this.two[0]][this.two[1]] = 1;
+		tetrisGrid[this.three[0]][this.three[1]] = 1;
+		tetrisGrid[this.four[0]][this.four[1]] = 1;	
 		}
 	}
 
 	this.rotateRightLLeftOne = function() {
-		if (this.orientation == 0) {
 
+		if (this.orientation == 0) {
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
 			if (detectCollision([this.one[0]-1, this.one[1]+1],
 							[this.two[0], this.two[1]],
 							[this.three[0]+1, this.three[1]-1],
@@ -339,10 +413,19 @@ function rightl() {
 				this.four = [this.four[0],this.four[1]-2];
 
 				this.orientation = 3;
+			} else {
+			tetrisGrid[this.one[0]][this.one[1]] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]][this.three[1]] = 1;
+			tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 
 
 		} else if (this.orientation == 1) {
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
 			if (detectCollision([this.one[0]-1, this.one[1]-1],
 							[this.two[0], this.two[1]],
 							[this.three[0]+1, this.three[1]+1],
@@ -365,9 +448,18 @@ function rightl() {
 			this.four = [this.four[0]+2,this.four[1]];
 
 			this.orientation = 0;
+			} else {
+			tetrisGrid[this.one[0]][this.one[1]] = 1;
+			tetrisGrid[this.two[0]][this.two[1]] = 1;
+			tetrisGrid[this.three[0]][this.three[1]] = 1;
+			tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 		}
 		else if (this.orientation == 2) {
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
 			if (detectCollision([this.one[0]+1, this.one[1]-1],
 							[this.two[0], this.two[1]],
 							[this.three[0]-1, this.three[1]+1],
@@ -391,10 +483,19 @@ function rightl() {
 				this.four = [this.four[0],this.four[1]+2];
 
 				this.orientation = 1;
+			} else {
+				tetrisGrid[this.one[0]][this.one[1]] = 1;
+				tetrisGrid[this.two[0]][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 
 		}
 		else if (this.orientation == 3) {
+				tetrisGrid[this.one[0]][this.one[1]] = 0;
+				tetrisGrid[this.two[0]][this.two[1]] = 0;
+				tetrisGrid[this.three[0]][this.three[1]] = 0;
+				tetrisGrid[this.four[0]][this.four[1]] = 0;
 			if (detectCollision([this.one[0]+1, this.one[1]+1],
 							[this.two[0], this.two[1]],
 							[this.three[0]-1, this.three[1]-1],
@@ -418,6 +519,11 @@ function rightl() {
 				this.four = [this.four[0]-2,this.four[1]];
 
 				this.orientation = 2;
+			} else {
+				tetrisGrid[this.one[0]][this.one[1]] = 1;
+				tetrisGrid[this.two[0]][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 		}
 	}
@@ -486,6 +592,15 @@ function drawBlock(xcoord, ycoord)
 createTetrisGrid();
 var activePiece1 = new ActivePiece(2);
 activePiece1.activePiece.drawRightLTop();
+plotMatrix();
+clearGrid();
+activePiece1.activePiece.dropRightLOne();
+plotMatrix();
+clearGrid();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.rotateRightLLeftOne();
+activePiece1.activePiece.dropRightLOne();
 plotMatrix();
 clearGrid();
 activePiece1.activePiece.dropRightLOne();
