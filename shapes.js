@@ -540,6 +540,18 @@ function ActivePiece(type) {
     else if (this.type == 2) {
     	this.activePiece = new rightl();
     }
+
+    this.drawPiece = function() {
+		if (this.type == 0) {
+	    	this.activePiece.drawSquareTop();
+	    }
+	    else if (this.type == 1) {
+	    	this.activePiece.drawLeftLTop();
+	    }
+	    else if (this.type == 2) {
+	    	this.activePiece.drawRightLTop();
+	    }
+    }
 }
 
 function createTetrisGrid() {
@@ -589,7 +601,26 @@ function drawBlock(xcoord, ycoord)
 	context.stroke(); //Actually draws what has been defined
 }
 
-createTetrisGrid();
+function Game()
+{
+	this.activePiece1 = 0;
+
+	this.redrawGrid = function() {
+		clearGrid();
+		plotMatrix();
+	}
+
+	this.startGame = function() {
+		createTetrisGrid();
+	}
+
+	this.createPiece = function(pieceType) {
+		this.activePiece1 = new ActivePiece(pieceType);
+		this.activePiece1.drawPiece();
+	}
+
+}
+
 var activePiece1 = new ActivePiece(2);
 activePiece1.activePiece.drawRightLTop();
 plotMatrix();
@@ -605,7 +636,7 @@ plotMatrix();
 clearGrid();
 activePiece1.activePiece.dropRightLOne();
 plotMatrix();
-
+/*
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
         clearGrid();
@@ -616,3 +647,4 @@ document.addEventListener('keydown', function(event) {
         alert('Right was pressed');
     }
 });
+*/
