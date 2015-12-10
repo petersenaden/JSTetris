@@ -552,6 +552,44 @@ function ActivePiece(type) {
 	    	this.activePiece.drawRightLTop();
 	    }
     }
+
+    this.rotatePiece = function(dir) {
+    	//0 will be left, 1 will be right
+    	if (dir == 0) {
+    		if (this.type == 0) {
+    			//do nothing - might change later
+    		}
+    		else if (this.type == 1) {
+    			this.activePiece.rotateLeftLLeftOne();
+    		}
+    		else if (this.type == 2) {
+    			this.activePiece.rotateRightLLeftOne();
+    		}
+    	}
+    	else if (dir == 1) {
+    		if (this.type == 0) {
+    			//do nothing - might change later
+    		}
+    		else if (this.type == 1) {
+    			//do nothing - might change later
+    		}
+    		else if (this.type == 2) {
+    			//do nothing - might change later
+    		}
+    		}	
+    	}
+
+    this.dropPiece = function() {
+    	if (this.type == 0) {
+	    	this.activePiece.dropSquareOne();
+	    }
+	    else if (this.type == 1) {
+	    	this.activePiece.dropLeftLOne();
+	    }
+	    else if (this.type == 2) {
+	    	this.activePiece.dropRightLOne();
+	    }
+    }
 }
 
 function createTetrisGrid() {
@@ -603,7 +641,7 @@ function drawBlock(xcoord, ycoord)
 
 function Game()
 {
-	this.activePiece1 = 0;
+	this.activePiece1 = 0; //holder value simply for initialization
 
 	this.redrawGrid = function() {
 		clearGrid();
@@ -619,6 +657,13 @@ function Game()
 		this.activePiece1.drawPiece();
 	}
 
+	this.executeRotatePiece = function(dir) {
+		this.activepiece1.rotatePiece(dir);
+	}
+
+	this.executeDropPiece = function() {
+		//STARTHERE
+	}
 }
 
 var activePiece1 = new ActivePiece(2);
