@@ -5,5 +5,8 @@ mainGame.executeDropPiece();
 mainGame.executeRotatePiece(0);
 mainGame.executeDropPiece();
 mainGame.executeDropPiece();
+mainGame.executeDropPiece();
+mainGame.executeDropPiece();
 mainGame.createPiece(0);
+mainGame.executeDropPiece();
 mainGame.executeDropPiece();
