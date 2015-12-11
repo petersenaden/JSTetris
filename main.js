@@ -9,3 +9,4 @@ mainGame.executeDropPiece();
 mainGame.executeDropPiece();
 mainGame.createPiece(0);
 mainGame.executeDropPiece();
+mainGame.executeDropPiece();

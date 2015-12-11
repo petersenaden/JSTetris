@@ -7,8 +7,7 @@ function createTetrisGrid() {
 	//globals from another file in here.
 }
 
-function createMatrix( rows, cols, defaultValue)
-{
+function createMatrix( rows, cols, defaultValue) {
 	var arr = [];
 	// Creates all lines:
 	for(var i=0; i < rows; i++){
@@ -39,10 +38,39 @@ function plotMatrix() {
 	}
 }
 
-function drawBlock(xcoord, ycoord)
-{
+function drawBlock(xcoord, ycoord) {
 	var blockWidth = 100;
 	var blockHeight = 100;
 	context.rect(xcoord, ycoord, blockWidth, blockHeight);
 	context.stroke(); //Actually draws what has been defined
 }
+
+function checkLineFull(rowNum) {
+	for (var i = 0; i < canvas.width / 100; i++) {
+		if (tetrisGrid[i][rowNum] == 0) {
+			return false;
+			}
+		}
+	return true;
+}
+
+function checkLineEmpty(rowNum) {
+	for (var i = 0; i < canvas.width / 100; i++) {
+		if (tetrisGrid[i][rowNum] == 1) {
+			return false;
+			}
+		}
+	return true;
+}
+
+function clearLines() {
+	numberLinesCleared = 0;
+	for (var i = 0; i < canvas.height / 100; i++) {
+		if (checkLineFull(i) == true) {
+			//TO DO:START HERE WITH LOGIC ON FRIDAY
+			numberLinesCleared = numberLinesCleared + 1;
+			}
+		}
+	return numberLinesCleared;
+}
+

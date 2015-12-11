@@ -46,7 +46,8 @@ function detectCollision(one, two, three, four) {
 	return 0;
 }
 
-function sqr() {
+function Square()
+{
 	this.one = [0,0];
 	this.two = [0,0];
 	this.three = [0,0];
@@ -77,9 +78,9 @@ function sqr() {
 		tetrisGrid[this.four[0]][this.four[1]] = 0;
 
 		if (detectCollision([this.one[0], this.one[1]+1],
-							[[this.two[0], this.two[1]+1]],
-							[[this.three[0], this.three[1]+1]],
-							[[this.four[0], this.four[1]+1]]) == 0) {
+							[this.two[0], this.two[1]+1],
+							[this.three[0], this.three[1]+1],
+							[this.four[0], this.four[1]+1]) == 0) {
 
 		//Set the block's current blocks to empty
 		tetrisGrid[this.one[0]][this.one[1]] = 0;
@@ -107,7 +108,7 @@ function sqr() {
 	}
 }
 
-function leftl() {
+function LeftL() {
 	this.one = [0,0]; //
 	this.two = [0,0];
 	this.three = [0,0];
@@ -321,7 +322,7 @@ function leftl() {
 
 }
 
-function rightl() {
+function RightL() {
 	this.one = [0,0];
 	this.two = [0,0];
 	this.three = [0,0];
@@ -534,13 +535,13 @@ function ActivePiece(passedType) {
     this.activePiece = 0;
 
     if (this.type == 0) {
-    	this.activePiece = new sqr();
+    	this.activePiece = new Square();
     }
     else if (this.type == 1) {
-    	this.activePiece = new leftl();
+    	this.activePiece = new LeftL();
     }
     else if (this.type == 2) {
-    	this.activePiece = new rightl();
+    	this.activePiece = new RightL();
     }
 
     this.drawPiece = function() {
