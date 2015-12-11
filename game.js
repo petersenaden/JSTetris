@@ -1,6 +1,6 @@
 function GameInterface()
 {
-	this.currPiece = 0; //holder value simply for initialization
+	this.currPiece; //holder value simply for initialization
 
 	this.startGame = function() {
 		createTetrisGrid();

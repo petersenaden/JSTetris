@@ -68,7 +68,7 @@ function sqr() {
 			this.four = [width+1,1];
 		}
 	}
-	//fixed for collision
+
 	this.dropSquareOne = function() {
 		//detect collision
 		tetrisGrid[this.one[0]][this.one[1]] = 0;
@@ -529,8 +529,10 @@ function rightl() {
 	}
 }
 
-function ActivePiece(type) {
-    this.type = type;
+function ActivePiece(passedType) {
+    this.type = passedType;
+    this.activePiece = 0;
+
     if (this.type == 0) {
     	this.activePiece = new sqr();
     }
@@ -591,3 +593,4 @@ function ActivePiece(type) {
 	    }
     }
 }
+
