@@ -73,4 +73,3 @@ function clearLines() {
 		}
 	return numberLinesCleared;
 }
-

@@ -27,6 +27,11 @@ function GameInterface()
 		this.currPiece.dropPiece();
 		redrawGrid();
 	}
+
+	this.executeShiftPiece = function(dir) {
+		this.currPiece.shiftPiece(dir);
+		redrawGrid();
+	}
 }
 
 /*
