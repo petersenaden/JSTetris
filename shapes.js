@@ -6,19 +6,8 @@ var context = canvas.getContext("2d");
 //GLOBALS
 
 function detectCollision(one, two, three, four) {
-	//1 is true, 0 is false
-	if (tetrisGrid[one[0]][one[1]] != 0) {
-		return 1;
-	}
-	if (tetrisGrid[two[0]][two[1]] != 0) {
-		return 1;
-	}
-	if (tetrisGrid[three[0]][three[1]] != 0) {
-		return 1;
-	}
-	if (tetrisGrid[four[0]][four[1]] != 0) {
-		return 1;
-	}
+	//1 is collision detected, 0 is no collision
+
 	if (one[0] < 0 || one[0] > canvas.width / 100) {
 		return 1;
 	}
@@ -41,6 +30,18 @@ function detectCollision(one, two, three, four) {
 		return 1;
 	}
 	if (four[1] < 0 || four[1] > canvas.height / 100) {
+		return 1;
+	}
+	if (tetrisGrid[one[0]][one[1]] != 0) {
+		return 1;
+	}
+	if (tetrisGrid[two[0]][two[1]] != 0) {
+		return 1;
+	}
+	if (tetrisGrid[three[0]][three[1]] != 0) {
+		return 1;
+	}
+	if (tetrisGrid[four[0]][four[1]] != 0) {
 		return 1;
 	}
 	return 0;
@@ -128,13 +129,13 @@ function Square()
 		//shift all the x values left by one
 		//0 = left, 1 = right
 		if (dir == 0) {
-			if (this.shiftSquareByOffset(1, 0, 1, 0, 1, 0, 1, 0) == true) {
+			if (this.shiftSquareByOffset(-1, 0, -1, 0, -1, 0, -1, 0) == true) {
 				return true;
 			} else {
 				return false;
 			}
 		} else {
-			if (this.shiftSquareByOffset(-1, 0, -1, 0, -1, 0, -1, 0) == true) {
+			if (this.shiftSquareByOffset(1, 0, 1, 0, 1, 0, 1, 0) == true) {
 				return true;
 			} else {
 				return false;
@@ -220,21 +221,21 @@ function LeftL() {
 		}
 	}
 
-	this.shiftLeftLLeft = function() {
-		//shift all the y values down by one
-		if (this.shiftSquareByOffset(0, 1, 0, 1, 0, 1, 0, 1) == true) {
-			return true;
+	this.shiftLeftLHorizontally = function(dir) {
+		//shift all the x values left by one
+		//0 = left, 1 = right
+		if (dir == 0) {
+			if (this.shiftSquareByOffset(-1, 0, -1, 0, -1, 0, -1, 0) == true) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			return false;
-		}
-	}
-
-	this.shiftLeftLRight = function() {
-		//shift all the y values down by one
-		if (this.shiftSquareByOffset(0, 1, 0, 1, 0, 1, 0, 1) == true) {
-			return true;
-		} else {
-			return false;
+			if (this.shiftSquareByOffset(1, 0, 1, 0, 1, 0, 1, 0) == true) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 
