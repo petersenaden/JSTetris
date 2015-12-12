@@ -8,12 +8,16 @@ function GameInterface()
 		createTetrisGrid();
 	}
 
-	this.engageTileKeyboardControls = function() {
-		this.controls.turnOnRotationButtons(selfCopy);
+	this.engageTileHorizontalKeyboardControls = function() {
+		//0 turns on, 1 turns off
+		this.controls.passInGameCopy(selfCopy);
+		this.controls.switchOnOffRotationButtons(selfCopy, 0);
 	}
 
-	this.suppressTileKeyboardControls = function() {
-		this.controls.turnOffRotationButtons(selfCopy);
+	this.suppressTileHorizontalKeyboardControls = function() {
+		//0 turns on, 1 turns off
+		this.controls.passInGameCopy(selfCopy);
+		this.controls.switchOnOffRotationButtons(selfCopy, 1);
 	}
 
 	this.redrawGrid = function() {
