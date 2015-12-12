@@ -1,9 +1,19 @@
 function GameInterface()
 {
 	this.currPiece; //Current tetromino
+	this.controls = new PlayerInput();
+	var selfCopy = this;
 
 	this.startGame = function() {
 		createTetrisGrid();
+	}
+
+	this.engageTileKeyboardControls = function() {
+		this.controls.turnOnRotationButtons(selfCopy);
+	}
+
+	this.suppressTileKeyboardControls = function() {
+		this.controls.turnOffRotationButtons(selfCopy);
 	}
 
 	this.redrawGrid = function() {

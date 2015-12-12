@@ -1,21 +1,24 @@
 function PlayerInput()
 {
 
-this.intializeRotationButtons = function() {
-		createTetrisGrid();
-	}
+this.turnOnRotationButtons = function(gameCopy) {
+    var engageControls = function(event) {
+        if(event.keyCode == 37) {
+            gameCopy.executeShiftPiece(0);
+        }
+        else if(event.keyCode == 39) {
+            gameCopy.executeShiftPiece(1);
+        }
+    }
 
-/*
-document.addEventListener('keydown', function(event) {
-    if(event.keyCode == 37) {
-        clearGrid();
-		activePiece1.activePiece.rotateRightLLeftOne();
-		plotMatrix();
+    document.getElementById("tetrisBoard").addEventListener('keydown', engageControls);
+
     }
-    else if(event.keyCode == 39) {
-        alert('Right was pressed');
+
+this.turnOffRotationButtons = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', engageControls);
+
     }
-});*/
 
 
 }

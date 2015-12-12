@@ -24,9 +24,11 @@ mainGame.executeDropPiece();
 mainGame.executeDropPiece();
 mainGame.executeShiftPiece(0);
 mainGame.executeShiftPiece(0);
+mainGame.engageTileKeyboardControls();
+mainGame.suppressTileKeyboardControls();
 mainGame.createPiece(2);
 mainGame.executeDropPiece();
-mainGame.executeRotatePiece(0);
+/*mainGame.executeRotatePiece(0);
 mainGame.executeRotatePiece(0);
 mainGame.executeRotatePiece(0);
 mainGame.executeShiftPiece(1);
@@ -44,4 +46,4 @@ mainGame.executeShiftPiece(0);
 console.log(scoreAllLines());
 console.log(clearFullLines());
 console.log(applyGravityToBoard());
-mainGame.redrawGrid();
+mainGame.redrawGrid();*/
