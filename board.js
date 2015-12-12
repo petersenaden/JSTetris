@@ -97,17 +97,16 @@ function clearLine(rowNum) {
 }
 
 function applyGravityToBoard() {
-	for (var i = 0; i < canvas.height / 100; i++) {
-		if (checkLineFull(i) == true) {
-			//TO DO:START HERE WITH LOGIC ON FRIDAY
+	for (var i = canvas.height / 100; i > 0; i--) {
+		if (checkLineEmpty(i) == true) {
+			dropLine(i);
 			}
 		}
 }
 
-function dropLine() {
-	for (var i = 0; i < canvas.height / 100; i++) {
-		if (checkLineFull(i) == true) {
-			//TO DO:START HERE WITH LOGIC ON FRIDAY
-			}
-		}
+function dropLine(rowNum) {
+	for (var i = 0; i < canvas.width / 100; i++) {
+		tetrisGrid[i][rowNum] = tetrisGrid[i][rowNum - 1];
+		tetrisGrid[i][rowNum - 1] = 0;
+	}
 }
