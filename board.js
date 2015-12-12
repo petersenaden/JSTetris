@@ -46,6 +46,10 @@ function drawBlock(xcoord, ycoord) {
 }
 
 function checkLineFull(rowNum) {
+	if (rowNum < 0 || rowNum >= canvas.height / 100) {
+		return false;
+	}
+
 	for (var i = 0; i < canvas.width / 100; i++) {
 		if (tetrisGrid[i][rowNum] == 0) {
 			return false;
@@ -55,6 +59,10 @@ function checkLineFull(rowNum) {
 }
 
 function checkLineEmpty(rowNum) {
+	if (rowNum < 0 || rowNum >= canvas.height / 100) {
+		return false;
+	}
+
 	for (var i = 0; i < canvas.width / 100; i++) {
 		if (tetrisGrid[i][rowNum] == 1) {
 			return false;
@@ -63,13 +71,43 @@ function checkLineEmpty(rowNum) {
 	return true;
 }
 
-function clearLines() {
-	numberLinesCleared = 0;
+function scoreAllLines() {
+	numberRowsCleared = 0;
+	for (var i = 0; i < canvas.height / 100; i++) {
+		if (checkLineFull(i) == true) {
+			numberRowsCleared = numberRowsCleared + 1;
+		}
+	}
+	return numberRowsCleared;
+}
+
+function clearFullLines() {
+	for (var i = 0; i < canvas.height / 100; i++) {
+		if (checkLineFull(i) == true) {
+			clearLine(i);
+			console.log(i);
+		}
+	}
+}
+
+function clearLine(rowNum) {
+	for (var i = 0; i < canvas.width / 100; i++) {
+		tetrisGrid[i][rowNum] = 0;
+	}
+}
+
+function applyGravityToBoard() {
 	for (var i = 0; i < canvas.height / 100; i++) {
 		if (checkLineFull(i) == true) {
 			//TO DO:START HERE WITH LOGIC ON FRIDAY
-			numberLinesCleared = numberLinesCleared + 1;
 			}
 		}
-	return numberLinesCleared;
+}
+
+function dropLine() {
+	for (var i = 0; i < canvas.height / 100; i++) {
+		if (checkLineFull(i) == true) {
+			//TO DO:START HERE WITH LOGIC ON FRIDAY
+			}
+		}
 }

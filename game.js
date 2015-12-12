@@ -6,7 +6,8 @@ function GameInterface()
 		createTetrisGrid();
 	}
 
-	function redrawGrid() {
+	this.redrawGrid = function() {
+		//probably can be made private when no longer needed for debugging
 		clearGrid();
 		plotMatrix();
 	}
@@ -14,23 +15,23 @@ function GameInterface()
 	this.createPiece = function(pieceType) {
 		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();
-		redrawGrid();
+		this.redrawGrid();
 	}
 
 	this.executeRotatePiece = function(dir) {
 		//0 left, 1 right
 		this.currPiece.rotatePiece(dir);
-		redrawGrid();
+		this.redrawGrid();
 	}
 
 	this.executeDropPiece = function() {
 		this.currPiece.dropPiece();
-		redrawGrid();
+		this.redrawGrid();
 	}
 
 	this.executeShiftPiece = function(dir) {
 		this.currPiece.shiftPiece(dir);
-		redrawGrid();
+		this.redrawGrid();
 	}
 }
 

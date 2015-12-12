@@ -1,1 +1,1 @@
-# tanuki1
+# Simple implementation of tetris in Javascript
