@@ -44,5 +44,4 @@ mainGame.executeShiftPiece(0);
 console.log(scoreAllLines());
 console.log(clearFullLines());
 console.log(applyGravityToBoard());
-console.log(applyGravityToBoard());
 mainGame.redrawGrid();

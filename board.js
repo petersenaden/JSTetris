@@ -97,11 +97,13 @@ function clearLine(rowNum) {
 }
 
 function applyGravityToBoard() {
-	for (var i = canvas.height / 100; i > 0; i--) {
-		if (checkLineEmpty(i) == true) {
-			dropLine(i);
+	for (var j = 0; j < canvas.height / 100; j++) {
+		for (var i = canvas.height / 100; i > 0; i--) {
+			if (checkLineEmpty(i) == true) {
+				dropLine(i);
 			}
 		}
+	}
 }
 
 function dropLine(rowNum) {

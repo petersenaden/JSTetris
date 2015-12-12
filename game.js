@@ -1,13 +1,13 @@
 function GameInterface()
 {
-	this.currPiece; //holder value simply for initialization
+	this.currPiece; //Current tetromino
 
 	this.startGame = function() {
 		createTetrisGrid();
 	}
 
 	this.redrawGrid = function() {
-		//probably can be made private when no longer needed for debugging
+		//Can be made private when no longer needed for debugging
 		clearGrid();
 		plotMatrix();
 	}
