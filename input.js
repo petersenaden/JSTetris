@@ -1,27 +1,46 @@
 function PlayerInput()
 {
-    this.gameCopy = 0;
+    this.gameCopy; //reference copy of the game interface
+    var self = this; //necessary because event handlers are a nightmare
 
-    this.passInGameCopy = function(passedGameCopy) {
-        this.gameCopy = passedGameCopy;
+this.setGamePiece = function(passedInGameCopy) {
+    //Passes in the copy of the game interface
+        this.gameCopy = passedInGameCopy;
     }
 
-    function engageControls(event) {
+this.shifterButtons = {
+    handleEvent: function (event) {
         if(event.keyCode == 37) {
-            this.gameCopy.executeShiftPiece(0);
+            self.gameCopy.executeShiftPiece(0);
         }
         else if(event.keyCode == 39) {
-            this.gameCopy.executeShiftPiece(1);
+            self.gameCopy.executeShiftPiece(1);
         }
     }
+};
 
-    this.switchOnOffRotationButtons = function(gameCopy, funcSwitch) {
-
-        if (funcSwitch == 0){
-            document.getElementById("tetrisBoard").addEventListener("keydown", engageControls);
-        } else {
-            document.getElementById("tetrisBoard").removeEventListener("keydown", engageControls);
+this.rotateButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 38) {
+            self.gameCopy.executeRotatePiece(0);
         }
+    }
+};
+
+this.turnOnShifterButtons = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.shifterButtons);
+    }
+
+this.turnOffShifterButtons = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.shifterButtons);
+    }
+
+this.turnOnRotationButtons = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.rotateButton);
+    }
+
+this.turnOffRotationButtons = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.rotateButton);
     }
 
 }

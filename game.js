@@ -8,16 +8,24 @@ function GameInterface()
 		createTetrisGrid();
 	}
 
-	this.engageTileHorizontalKeyboardControls = function() {
-		//0 turns on, 1 turns off
-		this.controls.passInGameCopy(selfCopy);
-		this.controls.switchOnOffRotationButtons(selfCopy, 0);
+	this.engageShifterKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnShifterButtons();
 	}
 
-	this.suppressTileHorizontalKeyboardControls = function() {
-		//0 turns on, 1 turns off
-		this.controls.passInGameCopy(selfCopy);
-		this.controls.switchOnOffRotationButtons(selfCopy, 1);
+	this.suppressShifterKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffShifterButtons();
+	}
+
+	this.engageRotationKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnRotationButtons();
+	}
+
+	this.suppressRotationKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffRotationButtons();
 	}
 
 	this.redrawGrid = function() {
@@ -31,7 +39,7 @@ function GameInterface()
 		this.currPiece.drawPiece();
 		this.redrawGrid();
 	}
-
+ 
 	this.executeRotatePiece = function(dir) {
 		//0 left, 1 right
 		this.currPiece.rotatePiece(dir);
