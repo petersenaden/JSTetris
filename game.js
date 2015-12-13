@@ -8,6 +8,18 @@ function GameInterface()
 		createTetrisGrid();
 	}
 
+	this.engageAllKeyboardControls = function() {
+		this.engageDropKeyboardControls();
+		this.engageShifterKeyboardControls();
+		this.engageRotationKeyboardControls();
+	}
+
+	this.suppressAllKeyboardControls = function() {
+		this.suppressDropKeyboardControls();
+		this.suppressShifterKeyboardControls();
+		this.supressRotationKeyboardControls();
+	}
+
 	this.engageDropKeyboardControls = function() {
 		this.controls.setGamePiece(selfCopy);
 		this.controls.turnOnDropButton();
@@ -44,6 +56,14 @@ function GameInterface()
 		plotMatrix();
 	}
 
+	this.createRandomPiece = function() {
+		pieceType = Math.floor((Math.random() * 3) + 1);
+		this.currPiece = new ActivePiece(pieceType);
+		this.currPiece.drawPiece();
+		this.redrawGrid();
+	}
+ 
+
 	this.createPiece = function(pieceType) {
 		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();
@@ -57,6 +77,11 @@ function GameInterface()
 	}
 
 	this.executeDropPiece = function() {
+		this.currPiece.dropPiece();
+		this.redrawGrid();
+	}
+
+	this.pullPieceDownOne = function() {
 		if (this.currPiece.dropPiece() == false) {
 			console.log(scoreAllLines());
 			clearFullLines();
@@ -70,16 +95,3 @@ function GameInterface()
 		this.redrawGrid();
 	}
 }
-
-/*
-document.addEventListener('keydown', function(event) {
-    if(event.keyCode == 37) {
-        clearGrid();
-		activePiece1.activePiece.rotateRightLLeftOne();
-		plotMatrix();
-    }
-    else if(event.keyCode == 39) {
-        alert('Right was pressed');
-    }
-});
-*/
