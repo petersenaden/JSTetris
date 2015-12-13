@@ -94,4 +94,13 @@ function GameInterface()
 		this.currPiece.shiftPiece(dir);
 		this.redrawGrid();
 	}
+
+	this.setGameGravityTimerToOn = function(time) {
+		//time is in milliseconds
+		var periodicPulldown = 0;
+		//http://stackoverflow.com/questions/24882306/return-value-inside-a-setinterval
+		//http://stackoverflow.com/questions/25235166/howto-run-function-every-few-seconds-that-has-return-values
+		setInterval(pullPieceDownOne, 3000);//3000 milliseconds
+	}
+
 }
