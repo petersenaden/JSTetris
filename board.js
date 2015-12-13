@@ -85,7 +85,6 @@ function clearFullLines() {
 	for (var i = 0; i < canvas.height / 100; i++) {
 		if (checkLineFull(i) == true) {
 			clearLine(i);
-			console.log(i);
 		}
 	}
 }

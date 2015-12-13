@@ -8,6 +8,16 @@ function GameInterface()
 		createTetrisGrid();
 	}
 
+	this.engageDropKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnDropButton();
+	}
+
+	this.suppressDropKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffDropButton();
+	}
+
 	this.engageShifterKeyboardControls = function() {
 		this.controls.setGamePiece(selfCopy);
 		this.controls.turnOnShifterButtons();
@@ -47,7 +57,11 @@ function GameInterface()
 	}
 
 	this.executeDropPiece = function() {
-		this.currPiece.dropPiece();
+		if (this.currPiece.dropPiece() == false) {
+			console.log(scoreAllLines());
+			clearFullLines();
+			applyGravityToBoard();
+		}
 		this.redrawGrid();
 	}
 

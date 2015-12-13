@@ -26,6 +26,7 @@ mainGame.executeShiftPiece(0);
 mainGame.executeShiftPiece(0);
 mainGame.engageShifterKeyboardControls();
 mainGame.engageRotationKeyboardControls();
+mainGame.engageDropKeyboardControls();
 //mainGame.suppressTileKeyboardControls();
 mainGame.createPiece(2);
 mainGame.executeDropPiece();

@@ -682,13 +682,13 @@ function ActivePiece(passedType) {
 
     this.dropPiece = function() {
     	if (this.type == 0) {
-	    	this.activePiece.dropSquareOne();
+	    	return this.activePiece.dropSquareOne();
 	    }
 	    else if (this.type == 1) {
-	    	this.activePiece.dropLeftLOne();
+	    	return this.activePiece.dropLeftLOne();
 	    }
 	    else if (this.type == 2) {
-	    	this.activePiece.dropRightLOne();
+	    	return this.activePiece.dropRightLOne();
 	    }
     }
 
