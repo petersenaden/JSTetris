@@ -1,6 +1,7 @@
 function GameInterface()
 {
 	this.currPiece; //Current tetromino
+	this.gameScore = 0;
 	this.controls = new PlayerInput();
 	var selfCopy = this;
 
@@ -57,8 +58,9 @@ function GameInterface()
 	}
 
 	this.createRandomPiece = function() {
-		pieceType = Math.floor((Math.random() * 3) + 1);
-		this.currPiece = new ActivePiece(1);
+		pieceType = Math.floor((Math.random() * 3) + 1) - 1;
+		console.log("Dropping piece: " + pieceType);
+		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();
 		this.redrawGrid();
 	}
@@ -82,19 +84,20 @@ function GameInterface()
 	}
 
 	this.pullPieceDownOne = function() {
-		console.log("pulling piece down one");
+		console.log("Pulling piece down one");
 		if (selfCopy.currPiece.dropPiece() == false) {
 			console.log("Piece appears to have hit bottom");
 			selfCopy.triggeredPieceOnFloor();
 		} else {
-			console.log("just redrawing grid")
+			console.log("Just redrawing grid because no bottom hit")
 			selfCopy.redrawGrid();
 		}
 	}
 
 	this.triggeredPieceOnFloor = function() {
 		selfCopy.suppressAllKeyboardControls();
-		console.log(scoreAllLines()); //FIXME...later
+		//FIXME: doesn't suppress controls, doesn't like the calling method
+		selfCopy.gameScore  = selfCopy.gameSCore + scoreAllLines(); //FIXME...later
 		clearFullLines();
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
@@ -109,7 +112,8 @@ function GameInterface()
 
 	this.setGameGravityTimerToOn = function(time) {
 		//time is in milliseconds
-		setInterval(this.pullPieceDownOne, 2000);//3000 milliseconds
+		//FIXME: Need to make time variable
+		setInterval(this.pullPieceDownOne, time);//2000 milliseconds
 	}
 
 }

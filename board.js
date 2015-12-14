@@ -72,13 +72,14 @@ function checkLineEmpty(rowNum) {
 }
 
 function scoreAllLines() {
+	scoringDictionary = [0, 40, 100, 300, 1200]
 	numberRowsCleared = 0;
 	for (var i = 0; i < canvas.height / 100; i++) {
 		if (checkLineFull(i) == true) {
 			numberRowsCleared = numberRowsCleared + 1;
 		}
 	}
-	return numberRowsCleared;
+	return scoringDictionary[numberRowsCleared];
 }
 
 function clearFullLines() {
