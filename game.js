@@ -1,5 +1,7 @@
 function GameInterface()
 {
+	//free tetris' board is 18h x 10w
+
 	this.currPiece; //Current tetromino
 	this.gameScore = 0;
 	this.controls = new PlayerInput();
