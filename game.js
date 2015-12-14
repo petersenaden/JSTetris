@@ -9,15 +9,15 @@ function GameInterface()
 	}
 
 	this.engageAllKeyboardControls = function() {
-		this.engageDropKeyboardControls();
-		this.engageShifterKeyboardControls();
-		this.engageRotationKeyboardControls();
+		selfCopy.engageDropKeyboardControls();
+		selfCopy.engageShifterKeyboardControls();
+		selfCopy.engageRotationKeyboardControls();
 	}
 
 	this.suppressAllKeyboardControls = function() {
-		this.suppressDropKeyboardControls();
-		this.suppressShifterKeyboardControls();
-		this.supressRotationKeyboardControls();
+		//selfCopy.suppressDropKeyboardControls();
+		//selfCopy.suppressShifterKeyboardControls();
+		//selfCopy.supressRotationKeyboardControls();
 	}
 
 	this.engageDropKeyboardControls = function() {
@@ -58,7 +58,7 @@ function GameInterface()
 
 	this.createRandomPiece = function() {
 		pieceType = Math.floor((Math.random() * 3) + 1);
-		this.currPiece = new ActivePiece(pieceType);
+		this.currPiece = new ActivePiece(1);
 		this.currPiece.drawPiece();
 		this.redrawGrid();
 	}
@@ -82,19 +82,24 @@ function GameInterface()
 	}
 
 	this.pullPieceDownOne = function() {
-		if (this.currPiece.dropPiece() == false) {
-			this.triggeredPieceOnFloor();
+		console.log("pulling piece down one");
+		if (selfCopy.currPiece.dropPiece() == false) {
+			console.log("Piece appears to have hit bottom");
+			selfCopy.triggeredPieceOnFloor();
+		} else {
+			console.log("just redrawing grid")
+			selfCopy.redrawGrid();
 		}
 	}
 
 	this.triggeredPieceOnFloor = function() {
-		suppressAllKeyboardControls();
+		selfCopy.suppressAllKeyboardControls();
 		console.log(scoreAllLines()); //FIXME...later
 		clearFullLines();
 		applyGravityToBoard();
-		this.redrawGrid();
-		this.createRandomPiece();
-		engageAllKeyboardControls();
+		selfCopy.redrawGrid();
+		selfCopy.createRandomPiece();
+		selfCopy.engageAllKeyboardControls();
 	}
 
 	this.executeShiftPiece = function(dir) {
@@ -104,7 +109,7 @@ function GameInterface()
 
 	this.setGameGravityTimerToOn = function(time) {
 		//time is in milliseconds
-		setInterval(this.pullPieceDownOne, 3000);//3000 milliseconds
+		setInterval(this.pullPieceDownOne, 2000);//3000 milliseconds
 	}
 
 }

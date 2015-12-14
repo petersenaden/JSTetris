@@ -4,12 +4,9 @@ function Tetris()
 
     this.startGameLoop = function() {
         this.game.startGame();
-        while (1) {
-            this.game.createRandomPiece();
-            this.game.engageAllKeyboardControls();
-            //this.game.setGameGravityTimerToOn();
-
-        }
+        this.game.createRandomPiece();
+        this.game.engageAllKeyboardControls();
+        this.game.setGameGravityTimerToOn();
     }
 
 }
