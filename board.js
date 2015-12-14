@@ -80,7 +80,7 @@ function scoreAllLines() {
 			numberRowsCleared = numberRowsCleared + 1;
 		}
 	}
-	return scoringDictionary[numberRowsCleared];
+	return [scoringDictionary[numberRowsCleared], numberRowsCleared];
 }
 
 function clearFullLines() {

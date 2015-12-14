@@ -4,6 +4,11 @@ function GameInterface()
 
 	this.currPiece; //Current tetromino
 	this.gameScore = 0;
+	this.currentLevel = 0;
+	this.linesCleared = 0;
+	this.gravityDelay = 2100;
+	this.gravityDelayIncreaseInterval = 100;
+	this.autoGravityInterval;
 	this.controls = new PlayerInput();
 	var selfCopy = this;
 
@@ -98,7 +103,9 @@ function GameInterface()
 
 	this.triggeredPieceOnFloor = function() {
 		selfCopy.suppressAllKeyboardControls();
-		selfCopy.gameScore  = selfCopy.gameScore + scoreAllLines();
+		calculatedValues = scoreAllLines();
+		selfCopy.gameScore  = selfCopy.gameScore + calculatedValues[0];
+		selfCopy.checkAndIncreaseLevel(calculatedValues[1]);
 		clearFullLines();
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
@@ -106,15 +113,31 @@ function GameInterface()
 		selfCopy.engageAllKeyboardControls();
 	}
 
+	this.checkAndIncreaseLevel = function(numSingleTimesLinesCleared) {
+		var lineIncreaseBoundary = 10;
+		if ((selfCopy.linesCleared % lineIncreaseBoundary) + numSingleTimesLinesCleared >= lineIncreaseBoundary) {
+			selfCopy.decreaseGravityTimer();
+		}
+		selfCopy.linesCleared = selfCopy.linesCleared + numSingleTimesLinesCleared;
+	}
+
 	this.executeShiftPiece = function(dir) {
 		this.currPiece.shiftPiece(dir);
 		this.redrawGrid();
 	}
 
-	this.setGameGravityTimerToOn = function(time) {
-		//time is in milliseconds
-		//FIXME: Need to make time variable
-		setInterval(this.pullPieceDownOne, time);//2000 milliseconds
+	this.decreaseGravityTimer = function() {
+		selfCopy.clearGameGravityTimer();
+		selfCopy.gravityDelay = selfCopy.gravityDelay - selfCopy.gravityDelayIncreaseInterval;
+		selfCopy.setGameGravityTimer(selfCopy.gravityDelay - selfCopy.gravityDelayIncreaseInterval);
+	}
+
+	this.setGameGravityTimer = function(delayTimeGravity) {
+		selfCopy.autoGravityInterval = setInterval(selfCopy.pullPieceDownOne, delayTimeGravity);
+	}
+
+	this.clearGameGravityTimer = function() {
+		clearInterval(selfCopy.autoGravityInterval);
 	}
 
 }

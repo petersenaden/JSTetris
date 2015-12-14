@@ -6,7 +6,7 @@ function Tetris()
         this.game.startGame();
         this.game.createRandomPiece();
         this.game.engageAllKeyboardControls();
-        this.game.setGameGravityTimerToOn(2000);
+        this.game.setGameGravityTimer(2100);
     }
 
 }
