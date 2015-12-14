@@ -16,9 +16,9 @@ function GameInterface()
 	}
 
 	this.suppressAllKeyboardControls = function() {
-		//selfCopy.suppressDropKeyboardControls();
-		//selfCopy.suppressShifterKeyboardControls();
-		//selfCopy.supressRotationKeyboardControls();
+		selfCopy.suppressDropKeyboardControls();
+		selfCopy.suppressShifterKeyboardControls();
+		selfCopy.suppressRotationKeyboardControls();
 	}
 
 	this.engageDropKeyboardControls = function() {
@@ -96,9 +96,9 @@ function GameInterface()
 
 	this.triggeredPieceOnFloor = function() {
 		selfCopy.suppressAllKeyboardControls();
-		//FIXME: doesn't suppress controls, doesn't like the calling method
-		selfCopy.gameScore  = selfCopy.gameSCore + scoreAllLines(); //FIXME...later
-		clearFullLines();
+		console.log(scoreAllLines());
+		//selfCopy.gameScore  = selfCopy.gameSCore + scoreAllLines(); //FIXME...later
+		console.log(clearFullLines());
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
 		selfCopy.createRandomPiece();
