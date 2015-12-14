@@ -7,6 +7,7 @@ var context = canvas.getContext("2d");
 var squareColor = "#FF69B4";
 var leftLColor = "#FFA500";
 var rightLColor = "#ADFF2F";
+canvas.style.background =  "#FFA500";
 //GLOBALS
 
 function detectCollision(one, two, three, four) {
