@@ -96,9 +96,8 @@ function GameInterface()
 
 	this.triggeredPieceOnFloor = function() {
 		selfCopy.suppressAllKeyboardControls();
-		console.log(scoreAllLines());
-		//selfCopy.gameScore  = selfCopy.gameSCore + scoreAllLines(); //FIXME...later
-		console.log(clearFullLines());
+		selfCopy.gameScore  = selfCopy.gameScore + scoreAllLines();
+		clearFullLines();
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
 		selfCopy.createRandomPiece();
