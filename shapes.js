@@ -1,35 +1,39 @@
 //GLOBALS
 var tetrisGrid;
+var colorGrid;
 var boardName = "tetrisBoard"
 var canvas = document.getElementById(boardName);
 var context = canvas.getContext("2d");
+var squareColor = "#FF69B4";
+var leftLColor = "#FFA500";
+var rightLColor = "#ADFF2F";
 //GLOBALS
 
 function detectCollision(one, two, three, four) {
 	//1 is collision detected, 0 is no collision
 
-	if (one[0] < 0 || one[0] >= canvas.width / 10) {
+	if (one[0] < 0 || one[0] >= canvas.width / 30) {
 		return 1;
 	}
-	if (one[1] < 0 || one[1] >= canvas.height / 10) {
+	if (one[1] < 0 || one[1] >= canvas.height / 30) {
 		return 1;
 	}
-	if (two[0] < 0 || two[0] >= canvas.width / 10) {
+	if (two[0] < 0 || two[0] >= canvas.width / 30) {
 		return 1;
 	}
-	if (two[1] < 0 || two[1] >= canvas.height / 10) {
+	if (two[1] < 0 || two[1] >= canvas.height / 30) {
 		return 1;
 	}
-	if (three[0] < 0 || three[0] >= canvas.width / 10) {
+	if (three[0] < 0 || three[0] >= canvas.width / 30) {
 		return 1;
 	}
-	if (three[1] < 0 || three[1] >= canvas.height / 10) {
+	if (three[1] < 0 || three[1] >= canvas.height / 30) {
 		return 1;
 	}
-	if (four[0] < 0 || four[0] >= canvas.width / 10) {
+	if (four[0] < 0 || four[0] >= canvas.width / 30) {
 		return 1;
 	}
-	if (four[1] < 0 || four[1] >= canvas.height / 10) {
+	if (four[1] < 0 || four[1] >= canvas.height / 30) {
 		return 1;
 	}
 	if (tetrisGrid[one[0]][one[1]] != 0) {
@@ -58,7 +62,7 @@ function Square()
 	// THREE FOUR
 
 	this.drawSquareTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
 		if (detectCollision([width, 0],
 							[width+1, 0],
 							[width, 1],
@@ -71,7 +75,16 @@ function Square()
 			this.two = [width+1,0];
 			this.three = [width,1];
 			this.four = [width+1,1];
+			this.reflectInColorGrid();
 		}
+	}
+
+	this.reflectInColorGrid = function() {
+		colorGrid[this.one[0]][this.one[1]] = squareColor;
+		colorGrid[this.two[0]][this.two[1]] = squareColor;
+		colorGrid[this.three[0]][this.three[1]] = squareColor;
+		colorGrid[this.four[0]][this.four[1]] = squareColor;
+
 	}
 
 	this.shiftSquareByOffset = function(oneXOffset, oneYOffset, twoXOffset, twoYOffset, threeXOffset, threeYOffset, fourXOffset, fourYOffset) {
@@ -103,6 +116,7 @@ function Square()
 		this.two = [this.two[0] + twoXOffset,this.two[1] + twoYOffset];
 		this.three = [this.three[0] + threeXOffset,this.three[1] + threeYOffset];
 		this.four = [this.four[0] + fourXOffset,this.four[1] + fourYOffset];
+		this.reflectInColorGrid();
 		return true;
 		} else {
 		//otherwise, set things back to the way they were
@@ -153,7 +167,7 @@ function LeftL() {
 	//2 - upside down, 3 - 90 left
 
 	this.drawLeftLTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
 
 		if (detectCollision([width, 0],
 							[width+1, 0],
@@ -168,7 +182,16 @@ function LeftL() {
 			this.three = [width+2,0]; //bottom piece
 			this.four = [width+2,1]; //tail
 			this.orientation = 3;
+			this.reflectInColorGrid();
 		}
+	}
+
+	this.reflectInColorGrid = function() {
+		colorGrid[this.one[0]][this.one[1]] = leftLColor;
+		colorGrid[this.two[0]][this.two[1]] = leftLColor;
+		colorGrid[this.three[0]][this.three[1]] = leftLColor;
+		colorGrid[this.four[0]][this.four[1]] = leftLColor;
+
 	}
 
 	this.shiftLeftLByOffset = function(oneXOffset, oneYOffset, twoXOffset, twoYOffset, threeXOffset, threeYOffset, fourXOffset, fourYOffset) {
@@ -200,6 +223,7 @@ function LeftL() {
 		this.two = [this.two[0] + twoXOffset,this.two[1] + twoYOffset];
 		this.three = [this.three[0] + threeXOffset,this.three[1] + threeYOffset];
 		this.four = [this.four[0] + fourXOffset,this.four[1] + fourYOffset];
+		this.reflectInColorGrid();
 		return true;
 		} else {
 		//otherwise, set things back to the way they were
@@ -384,8 +408,8 @@ function LeftL() {
 
 			}
 		}
+		this.reflectInColorGrid();
 	}
-
 }
 
 function RightL() {
@@ -398,7 +422,7 @@ function RightL() {
 	//2 - upside down, 3 - 90 left
 
 	this.drawRightLTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
 		if (detectCollision([width+2, 0],
 							[width+1, 0],
 							[width, 0],
@@ -412,7 +436,16 @@ function RightL() {
 			this.three = [width,0];
 			this.four = [width,1];
 			this.orientation = 1;
+			this.reflectInColorGrid();
 		}
+	}
+
+	this.reflectInColorGrid = function() {
+		colorGrid[this.one[0]][this.one[1]] = rightLColor;
+		colorGrid[this.two[0]][this.two[1]] = rightLColor;
+		colorGrid[this.three[0]][this.three[1]] = rightLColor;
+		colorGrid[this.four[0]][this.four[1]] = rightLColor;
+
 	}
 
 this.shiftRightLByOffset = function(oneXOffset, oneYOffset, twoXOffset, twoYOffset, threeXOffset, threeYOffset, fourXOffset, fourYOffset) {
@@ -444,6 +477,7 @@ this.shiftRightLByOffset = function(oneXOffset, oneYOffset, twoXOffset, twoYOffs
 		this.two = [this.two[0] + twoXOffset,this.two[1] + twoYOffset];
 		this.three = [this.three[0] + threeXOffset,this.three[1] + threeYOffset];
 		this.four = [this.four[0] + fourXOffset,this.four[1] + fourYOffset];
+		this.reflectInColorGrid();
 		return true;
 		} else {
 		//otherwise, set things back to the way they were
@@ -625,6 +659,7 @@ this.shiftRightLByOffset = function(oneXOffset, oneYOffset, twoXOffset, twoYOffs
 				tetrisGrid[this.four[0]][this.four[1]] = 1;
 			}
 		}
+		this.reflectInColorGrid();
 	}
 }
 
