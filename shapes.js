@@ -8,28 +8,28 @@ var context = canvas.getContext("2d");
 function detectCollision(one, two, three, four) {
 	//1 is collision detected, 0 is no collision
 
-	if (one[0] < 0 || one[0] >= canvas.width / 100) {
+	if (one[0] < 0 || one[0] >= canvas.width / 10) {
 		return 1;
 	}
-	if (one[1] < 0 || one[1] >= canvas.height / 100) {
+	if (one[1] < 0 || one[1] >= canvas.height / 10) {
 		return 1;
 	}
-	if (two[0] < 0 || two[0] >= canvas.width / 100) {
+	if (two[0] < 0 || two[0] >= canvas.width / 10) {
 		return 1;
 	}
-	if (two[1] < 0 || two[1] >= canvas.height / 100) {
+	if (two[1] < 0 || two[1] >= canvas.height / 10) {
 		return 1;
 	}
-	if (three[0] < 0 || three[0] >= canvas.width / 100) {
+	if (three[0] < 0 || three[0] >= canvas.width / 10) {
 		return 1;
 	}
-	if (three[1] < 0 || three[1] >= canvas.height / 100) {
+	if (three[1] < 0 || three[1] >= canvas.height / 10) {
 		return 1;
 	}
-	if (four[0] < 0 || four[0] >= canvas.width / 100) {
+	if (four[0] < 0 || four[0] >= canvas.width / 10) {
 		return 1;
 	}
-	if (four[1] < 0 || four[1] >= canvas.height / 100) {
+	if (four[1] < 0 || four[1] >= canvas.height / 10) {
 		return 1;
 	}
 	if (tetrisGrid[one[0]][one[1]] != 0) {
@@ -58,7 +58,7 @@ function Square()
 	// THREE FOUR
 
 	this.drawSquareTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
 		if (detectCollision([width, 0],
 							[width+1, 0],
 							[width, 1],
@@ -153,7 +153,7 @@ function LeftL() {
 	//2 - upside down, 3 - 90 left
 
 	this.drawLeftLTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
 
 		if (detectCollision([width, 0],
 							[width+1, 0],
@@ -398,7 +398,7 @@ function RightL() {
 	//2 - upside down, 3 - 90 left
 
 	this.drawRightLTop = function() {
-		var width = (canvas.width / 2 - ((canvas.width / 2) % 100)) / 100;
+		var width = (canvas.width / 2 - ((canvas.width / 2) % 10)) / 10;
 		if (detectCollision([width+2, 0],
 							[width+1, 0],
 							[width, 0],
