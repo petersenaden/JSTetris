@@ -2,8 +2,8 @@ function createTetrisGrid() {
 	//0 will correspond to empty, else will be full
 	var width = canvas.width / 30;
 	var height = canvas.height / 30;
-	tetrisGrid = createMatrix(width, height + 1, 0);
-	colorGrid = createMatrix(width, height + 1, 0);
+	tetrisGrid = createMatrix(width, height, 0);
+	colorGrid = createMatrix(width, height , 0);
 	//this should be fixed later. shouldn't be calling
 	//globals from another file in here.
 }
@@ -31,9 +31,9 @@ function clearGrid() {
 
 function plotMatrix() {
 	for (var x = 0; x < canvas.width / 30; x++) {
-		for (var y = 0; y < (canvas.height / 30 + 1); y++) {
+		for (var y = 0; y < (canvas.height / 30); y++) {
 			if (tetrisGrid[x][y] == 1) {
-				drawBlock(x*30, (y-1)*30);
+				drawBlock(x*30, (y)*30);
 			}
 		}
 	}

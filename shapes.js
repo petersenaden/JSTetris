@@ -7,34 +7,36 @@ var context = canvas.getContext("2d");
 var squareColor = "#FF69B4";
 var leftLColor = "#008080";
 var rightLColor = "#ADFF2F";
+var arrayWidth = canvas.width / 30;
+var arrayHeight = canvas.height / 30;
 canvas.style.background =  "#F0FFFF"; //board color
 //GLOBALS
 
 function detectCollision(one, two, three, four) {
 	//1 is collision detected, 0 is no collision
 
-	if (one[0] < 0 || one[0] >= canvas.width / 30  + 1) {
+	if (one[0] < 0 || one[0] >= arrayWidth) {
 		return 1;
 	}
-	if (one[1] < 0 || one[1] >= canvas.height / 30 + 1) {
+	if (one[1] < 0 || one[1] >= arrayHeight) {
 		return 1;
 	}
-	if (two[0] < 0 || two[0] >= canvas.width / 30 + 1) {
+	if (two[0] < 0 || two[0] >= arrayWidth) {
 		return 1;
 	}
-	if (two[1] < 0 || two[1] >= canvas.height / 30 + 1) {
+	if (two[1] < 0 || two[1] >= arrayHeight) {
 		return 1;
 	}
-	if (three[0] < 0 || three[0] >= canvas.width / 30 + 1) {
+	if (three[0] < 0 || three[0] >= arrayWidth) {
 		return 1;
 	}
-	if (three[1] < 0 || three[1] >= canvas.height / 30 + 1) {
+	if (three[1] < 0 || three[1] >= arrayHeight) {
 		return 1;
 	}
-	if (four[0] < 0 || four[0] >= canvas.width / 30 + 1) {
+	if (four[0] < 0 || four[0] >= arrayWidth) {
 		return 1;
 	}
-	if (four[1] < 0 || four[1] >= canvas.height / 30 + 1) {
+	if (four[1] < 0 || four[1] >= arrayHeight) {
 		return 1;
 	}
 	if (tetrisGrid[one[0]][one[1]] != 0) {
