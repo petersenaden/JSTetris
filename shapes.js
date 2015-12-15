@@ -740,4 +740,3 @@ function ActivePiece(passedType) {
 	    }
     }
 }
-
