@@ -30,10 +30,10 @@ function clearGrid() {
 }
 
 function plotMatrix() {
-	for (var i = 0; i < canvas.width / 30; i++) {
-		for (var j = 0	; j < canvas.height / 30; j++) {
-			if (tetrisGrid[i][j] == 1) {
-				drawBlock(i*30, j*30);
+	for (var x = 0; x < canvas.width / 30; x++) {
+		for (var y = 0; y < (canvas.height / 30 + 1); y++) {
+			if (tetrisGrid[x][y] == 1) {
+				drawBlock(x*30, (y-1)*30);
 			}
 		}
 	}
