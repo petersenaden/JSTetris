@@ -8,7 +8,7 @@ var squareColor = "#FF69B4";
 var leftLColor = "#008080";
 var rightLColor = "#ADFF2F";
 var arrayWidth = canvas.width / 30;
-var arrayHeight = canvas.height / 30;
+var arrayHeight = canvas.height / 30 +1;
 canvas.style.background =  "#F0FFFF"; //board color
 //GLOBALS
 

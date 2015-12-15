@@ -2,8 +2,8 @@ function createTetrisGrid() {
 	//0 will correspond to empty, else will be full
 	var width = canvas.width / 30;
 	var height = canvas.height / 30;
-	tetrisGrid = createMatrix(width, height, 0);
-	colorGrid = createMatrix(width, height , 0);
+	tetrisGrid = createMatrix(width, height+1, 0);
+	colorGrid = createMatrix(width, height, 0);
 	//this should be fixed later. shouldn't be calling
 	//globals from another file in here.
 }
@@ -31,9 +31,9 @@ function clearGrid() {
 
 function plotMatrix() {
 	for (var x = 0; x < canvas.width / 30; x++) {
-		for (var y = 0; y < (canvas.height / 30); y++) {
+		for (var y = 0; y < (canvas.height / 30)+1; y++) {
 			if (tetrisGrid[x][y] == 1) {
-				drawBlock(x*30, (y)*30);
+				drawBlock(x*30, (y-1)*30);
 			}
 		}
 	}
@@ -49,7 +49,7 @@ function drawBlock(xcoord, ycoord) {
 }
 
 function checkLineFull(rowNum) {
-	if (rowNum < 0 || rowNum >= canvas.height / 30) {
+	if (rowNum < 0 || rowNum >= canvas.height / 30 +1) {
 		return false;
 	}
 
@@ -62,7 +62,7 @@ function checkLineFull(rowNum) {
 }
 
 function checkLineEmpty(rowNum) {
-	if (rowNum < 0 || rowNum >= canvas.height / 30) {
+	if (rowNum < 0 || rowNum >= canvas.height / 30+1) {
 		return false;
 	}
 
@@ -78,7 +78,7 @@ function scoreAllLines() {
 	var scoringDictionary = [0, 40, 100, 300, 1200];
 	//FIXME: Don't redeclare the array every time...though there's no good place to put it for now
 	numberRowsCleared = 0;
-	for (var i = 0; i < canvas.height / 30; i++) {
+	for (var i = 0; i < canvas.height / 30+1; i++) {
 		if (checkLineFull(i) == true) {
 			numberRowsCleared = numberRowsCleared + 1;
 		}
@@ -87,7 +87,7 @@ function scoreAllLines() {
 }
 
 function clearFullLines() {
-	for (var i = 0; i < canvas.height / 30; i++) {
+	for (var i = 0; i < canvas.height / 30+1; i++) {
 		if (checkLineFull(i) == true) {
 			clearLine(i);
 		}
@@ -102,7 +102,7 @@ function clearLine(rowNum) {
 }
 
 function applyGravityToBoard() {
-	for (var j = 0; j < canvas.height / 30; j++) {
+	for (var j = 0; j < canvas.height / 30+1; j++) {
 		for (var i = canvas.height / 30; i > 0; i--) {
 			if (checkLineEmpty(i) == true) {
 				dropLine(i);
