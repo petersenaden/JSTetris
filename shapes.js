@@ -66,18 +66,18 @@ function Square()
 
 	this.drawSquareTop = function() {
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
-		if (detectCollision([width, 0],
-							[width+1, 0],
-							[width, 1],
-							[width+1, 1]) == 0) {
-			tetrisGrid[width][0] = 1;
-			tetrisGrid[width+1][0] = 1;
+		if (detectCollision([width, 1],
+							[width+1, 1],
+							[width, 2],
+							[width+1, 2]) == 0) {
 			tetrisGrid[width][1] = 1;
 			tetrisGrid[width+1][1] = 1;
-			this.one = [width,0];
-			this.two = [width+1,0];
-			this.three = [width,1];
-			this.four = [width+1,1];
+			tetrisGrid[width][2] = 1;
+			tetrisGrid[width+1][2] = 1;
+			this.one = [width,1];
+			this.two = [width+1,1];
+			this.three = [width,2];
+			this.four = [width+1,2];
 			this.reflectInColorGrid();
 		}
 	}
@@ -172,18 +172,18 @@ function LeftL() {
 	this.drawLeftLTop = function() {
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
 
-		if (detectCollision([width, 0],
-							[width+1, 0],
-							[width+2, 0],
-							[width+2, 1]) == 0) {
-			tetrisGrid[width][0] = 1;
-			tetrisGrid[width+1][0] = 1;
-			tetrisGrid[width+2][0] = 1;
+		if (detectCollision([width, 1],
+							[width+1, 1],
+							[width+2, 1],
+							[width+2, 2]) == 0) {
+			tetrisGrid[width][1] = 1;
+			tetrisGrid[width+1][1] = 1;
 			tetrisGrid[width+2][1] = 1;
-			this.one = [width,0]; //top of piece
-			this.two = [width+1,0]; //middle piece - rotated around
-			this.three = [width+2,0]; //bottom piece
-			this.four = [width+2,1]; //tail
+			tetrisGrid[width+2][2] = 1;
+			this.one = [width,1]; //top of piece
+			this.two = [width+1,1]; //middle piece - rotated around
+			this.three = [width+2,1]; //bottom piece
+			this.four = [width+2,2]; //tail
 			this.orientation = 3;
 			this.reflectInColorGrid();
 		}
@@ -426,18 +426,18 @@ function RightL() {
 
 	this.drawRightLTop = function() {
 		var width = (canvas.width / 2 - ((canvas.width / 2) % 30)) / 30;
-		if (detectCollision([width+2, 0],
-							[width+1, 0],
-							[width, 0],
-							[width, 1]) == 0) {
-			tetrisGrid[width][0] = 1;
-			tetrisGrid[width+1][0] = 1;
-			tetrisGrid[width+2][0] = 1;
+		if (detectCollision([width+2, 1],
+							[width+1, 1],
+							[width, 1],
+							[width, 2]) == 0) {
 			tetrisGrid[width][1] = 1;
-			this.one = [width+2,0];
-			this.two = [width+1,0];
-			this.three = [width,0];
-			this.four = [width,1];
+			tetrisGrid[width+1][1] = 1;
+			tetrisGrid[width+2][1] = 1;
+			tetrisGrid[width][2] = 1;
+			this.one = [width+2,1];
+			this.two = [width+1,1];
+			this.three = [width,1];
+			this.four = [width,2];
 			this.orientation = 1;
 			this.reflectInColorGrid();
 		}
