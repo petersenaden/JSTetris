@@ -1040,26 +1040,26 @@ function LeftZ() {
 			tetrisGrid[this.three[0]][this.three[1]] = 0;
 			tetrisGrid[this.four[0]][this.four[1]] = 0;
 
-			if (detectCollision([this.one[0]+1, this.one[1]+1],
-							[this.two[0], this.two[1]],
-							[this.three[0]-1, this.three[1]-1],
-							[this.four[0]-1, this.four[1]+1]) == 0) {
+			if (detectCollision([this.one[0]+2, this.one[1]],
+							[this.two[0]+1, this.two[1]-1],
+							[this.three[0], this.three[1]],
+							[this.four[0]-1, this.four[1]-1]) == 0) {
 				tetrisGrid[this.one[0]][this.one[1]] = 0;
 				tetrisGrid[this.two[0]][this.two[1]] = 0;
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
 				tetrisGrid[this.four[0]][this.four[1]] = 0;
 
 				//Drop the block down a piece for each block
-				tetrisGrid[this.one[0]+1][this.one[1]+1] = 1;
-				tetrisGrid[this.two[0]][this.two[1]] = 1;
-				tetrisGrid[this.three[0]-1][this.three[1]-1] = 1;
-				tetrisGrid[this.four[0]-1][this.four[1]+1] = 1;
+				tetrisGrid[this.one[0]+2][this.one[1]] = 1;
+				tetrisGrid[this.two[0]+1][this.two[1]-1] = 1;
+				tetrisGrid[this.three[0]][this.three[1]] = 1;
+				tetrisGrid[this.four[0]-1][this.four[1]-1] = 1;
 
 				//Back up the block's configuration
-				this.one = [this.one[0]+1,this.one[1]+1];
-				this.two = [this.two[0],this.two[1]];
-				this.three = [this.three[0]-1,this.three[1]-1];
-				this.four = [this.four[0]-1,this.four[1]+1];
+				this.one = [this.one[0]+2,this.one[1]];
+				this.two = [this.two[0]+1,this.two[1]-1];
+				this.three = [this.three[0],this.three[1]];
+				this.four = [this.four[0]-1,this.four[1]-1];
 
 				this.orientation = 3;
 			} else {
@@ -1077,26 +1077,26 @@ function LeftZ() {
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
 				tetrisGrid[this.four[0]][this.four[1]] = 0;
 
-			if (detectCollision([this.one[0]-1, this.one[1]+1],
-							[this.two[0], this.two[1]],
-							[this.three[0]+1, this.three[1]-1],
-							[this.four[0]-1, this.four[1]-1]) == 0) {
+			if (detectCollision([this.one[0]-1, this.one[1]+2],
+							[this.two[0], this.two[1]+1],
+							[this.three[0]-1, this.three[1]],
+							[this.four[0], this.four[1]-1]) == 0) {
 				tetrisGrid[this.one[0]][this.one[1]] = 0;
 				tetrisGrid[this.two[0]][this.two[1]] = 0;
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
 				tetrisGrid[this.four[0]][this.four[1]] = 0;
 
 				//Drop the block down a piece for each block
-				tetrisGrid[this.one[0]-1][this.one[1]+1] = 1;
-				tetrisGrid[this.two[0]][this.two[1]] = 1;
-				tetrisGrid[this.three[0]+1][this.three[1]-1] = 1;
-				tetrisGrid[this.four[0]-1][this.four[1]-1] = 1;
+				tetrisGrid[this.one[0]-1][this.one[1]+2] = 1;
+				tetrisGrid[this.two[0]][this.two[1]+1] = 1;
+				tetrisGrid[this.three[0]-1][this.three[1]] = 1;
+				tetrisGrid[this.four[0]][this.four[1]-1] = 1;
 
 				//Back up the block's configuration
-				this.one = [this.one[0]-1,this.one[1]+1];
-				this.two = [this.two[0],this.two[1]];
-				this.three = [this.three[0]+1,this.three[1]-1];
-				this.four = [this.four[0]-1,this.four[1]-1];
+				this.one = [this.one[0]-1,this.one[1]+2];
+				this.two = [this.two[0],this.two[1]+1];
+				this.three = [this.three[0]-1,this.three[1]];
+				this.four = [this.four[0],this.four[1]-1];
 
 				this.orientation = 0;
 			} else {
@@ -1115,8 +1115,8 @@ function LeftZ() {
 
 			if (detectCollision([this.one[0]-1, this.one[1]-1],
 							[this.two[0], this.two[1]],
-							[this.three[0]+1, this.three[1]+1],
-							[this.four[0]+1, this.four[1]-1]) == 0) {
+							[this.three[0]+1, this.three[1]-1],
+							[this.four[0]+2, this.four[1]]) == 0) {
 				tetrisGrid[this.one[0]][this.one[1]] = 0;
 				tetrisGrid[this.two[0]][this.two[1]] = 0;
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
@@ -1125,14 +1125,14 @@ function LeftZ() {
 				//Drop the block down a piece for each block
 				tetrisGrid[this.one[0]-1][this.one[1]-1] = 1;
 				tetrisGrid[this.two[0]][this.two[1]] = 1;
-				tetrisGrid[this.three[0]+1][this.three[1]+1] = 1;
-				tetrisGrid[this.four[0]+1][this.four[1]-1] = 1;
+				tetrisGrid[this.three[0]+1][this.three[1]-1] = 1;
+				tetrisGrid[this.four[0]+2][this.four[1]] = 1;
 
 				//Back up the block's configuration
 				this.one = [this.one[0]-1,this.one[1]-1];
 				this.two = [this.two[0],this.two[1]];
-				this.three = [this.three[0]+1,this.three[1]+1];
-				this.four = [this.four[0]+1,this.four[1]-1];
+				this.three = [this.three[0]+1,this.three[1]-1];
+				this.four = [this.four[0]+2,this.four[1]];
 
 				this.orientation = 1;
 				} else {
@@ -1148,26 +1148,26 @@ function LeftZ() {
 				tetrisGrid[this.two[0]][this.two[1]] = 0;
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
 				tetrisGrid[this.four[0]][this.four[1]] = 0;
-			if (detectCollision([this.one[0]+1, this.one[1]-1],
-							[this.two[0], this.two[1]],
-							[this.three[0]-1, this.three[1]+1],
-							[this.four[0]+1, this.four[1]+1]) == 0) {
+			if (detectCollision([this.one[0], this.one[1]-1],
+							[this.two[0]-1, this.two[1]],
+							[this.three[0], this.three[1]+1],
+							[this.four[0]-1, this.four[1]+2]) == 0) {
 				tetrisGrid[this.one[0]][this.one[1]] = 0;
 				tetrisGrid[this.two[0]][this.two[1]] = 0;
 				tetrisGrid[this.three[0]][this.three[1]] = 0;
 				tetrisGrid[this.four[0]][this.four[1]] = 0;
 
 				//Drop the block down a piece for each block
-				tetrisGrid[this.one[0]+1][this.one[1]-1] = 1;
-				tetrisGrid[this.two[0]][this.two[1]] = 1;
-				tetrisGrid[this.three[0]-1][this.three[1]+1] = 1;
-				tetrisGrid[this.four[0]+1][this.four[1]+1] = 1;
+				tetrisGrid[this.one[0]][this.one[1]-1] = 1;
+				tetrisGrid[this.two[0]-1][this.two[1]] = 1;
+				tetrisGrid[this.three[0]][this.three[1]+1] = 1;
+				tetrisGrid[this.four[0]-1][this.four[1]+2] = 1;
 
 				//Back up the block's configuration
-				this.one = [this.one[0]+1,this.one[1]-1];
-				this.two = [this.two[0],this.two[1]];
-				this.three = [this.three[0]-1,this.three[1]+1];
-				this.four = [this.four[0]+1,this.four[1]+1];
+				this.one = [this.one[0],this.one[1]-1];
+				this.two = [this.two[0]-1,this.two[1]];
+				this.three = [this.three[0],this.three[1]+1];
+				this.four = [this.four[0]-1,this.four[1]+2];
 
 				this.orientation = 2;
 			} else {
@@ -1198,6 +1198,9 @@ function ActivePiece(passedType) {
     else if (this.type == 3) {
     	this.activePiece = new TPiece();
     }
+    else if (this.type == 4) {
+    	this.activePiece = new LeftZ();
+    }
 
     this.drawPiece = function() {
 		if (this.type == 0) {
@@ -1211,6 +1214,9 @@ function ActivePiece(passedType) {
 	    }
 	    else if (this.type == 3) {
 	    	this.activePiece.drawTPieceTop();
+	    }
+	    else if (this.type == 4) {
+	    	this.activePiece.drawLeftZTop();
 	    }
     }
 
@@ -1229,6 +1235,9 @@ function ActivePiece(passedType) {
     		else if (this.type == 3) {
     			this.activePiece.rotateTPieceLeftOne();
     		}
+    		else if (this.type == 4) {
+    			this.activePiece.rotateLeftZLeftOne();
+    		}
     	}
     	else if (dir == 1) {
 	    		if (this.type == 0) {
@@ -1241,6 +1250,9 @@ function ActivePiece(passedType) {
 	    			//do nothing - might change later
 	    		}
 	    		else if (this.type == 3) {
+	    			//do nothing - might change later
+	    		}
+	    		else if (this.type == 4) {
 	    			//do nothing - might change later
 	    		}
     		}	
@@ -1259,6 +1271,9 @@ function ActivePiece(passedType) {
 	    else if (this.type == 3) {
 	    	return this.activePiece.dropTPieceOne();
 	    }
+	    else if (this.type == 4) {
+	    	return this.activePiece.dropLeftZOne();
+	    }
     }
 
     this.shiftPiece = function(dir) {
@@ -1273,6 +1288,9 @@ function ActivePiece(passedType) {
 	    }
 	    else if (this.type == 3) {
 	    	this.activePiece.shiftTPieceHorizontally(dir);
+	    }
+	    else if (this.type == 4) {
+	    	this.activePiece.shiftLeftZHorizontally(dir);
 	    }
     }
 }
