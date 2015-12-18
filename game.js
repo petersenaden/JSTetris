@@ -101,8 +101,8 @@ function GameInterface()
 	}
 
 	this.executeHardDropPiece = function() {
-		var xxx = false;
-		while (xxx == false) {
+		var xxx = true;
+		while (xxx == true) {
 			xxx = this.currPiece.dropPiece();
 		}
 		this.redrawGrid();
