@@ -63,7 +63,7 @@ function GameInterface()
 	}
 
 	this.createRandomPiece = function() {
-		pieceType = Math.floor((Math.random() * 5) + 1) - 1;
+		pieceType = 5;//Math.floor((Math.random() * 5) + 1) - 1;
 		console.log("Dropping piece: " + pieceType);
 		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();
