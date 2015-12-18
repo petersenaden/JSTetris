@@ -18,12 +18,24 @@ function GameInterface()
 		selfCopy.engageDropKeyboardControls();
 		selfCopy.engageShifterKeyboardControls();
 		selfCopy.engageRotationKeyboardControls();
+		selfCopy.engageHardDropKeyboardControls();
 	}
 
 	this.suppressAllKeyboardControls = function() {
 		selfCopy.suppressDropKeyboardControls();
 		selfCopy.suppressShifterKeyboardControls();
 		selfCopy.suppressRotationKeyboardControls();
+		selfCopy.suppressHardDropKeyboardControls();
+	}
+
+	this.engageHardDropKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnHardDropButton();
+	}
+
+	this.suppressHardDropKeyboardControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffHardDropButton();
 	}
 
 	this.engageDropKeyboardControls = function() {
@@ -85,6 +97,14 @@ function GameInterface()
 
 	this.executeDropPiece = function() {
 		this.currPiece.dropPiece();
+		this.redrawGrid();
+	}
+
+	this.executeHardDropPiece = function() {
+		var xxx = false;
+		while (xxx == false) {
+			xxx = this.currPiece.dropPiece();
+		}
 		this.redrawGrid();
 	}
 

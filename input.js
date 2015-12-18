@@ -35,6 +35,14 @@ this.dropButton = {
     }
 };
 
+this.hardDropButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 32) {
+            self.gameCopy.executeHardDropPiece();
+        }
+    }
+};
+
 this.turnOnShifterButtons = function(gameCopy) {
     document.getElementById("tetrisBoard").addEventListener('keydown', this.shifterButtons);
     }
@@ -57,6 +65,14 @@ this.turnOnDropButton = function(gameCopy) {
 
 this.turnOffDropButton = function(gameCopy) {
     document.getElementById("tetrisBoard").removeEventListener('keydown', this.dropButton);
+    }
+
+this.turnOnHardDropButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.hardDropButton);
+    }
+
+this.turnOffHardDropButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.hardDropButton);
     }
 
 
