@@ -101,10 +101,8 @@ function GameInterface()
 	}
 
 	this.executeHardDropPiece = function() {
-		var xxx = true;
-		while (xxx == true) {
-			xxx = this.currPiece.dropPiece();
-		}
+		//could trigger an infinite loop
+		while (!this.pullPieceDownOne());
 		this.redrawGrid();
 	}
 
@@ -113,10 +111,12 @@ function GameInterface()
 		if (selfCopy.currPiece.dropPiece() == false) {
 			console.log("Piece appears to have hit bottom");
 			selfCopy.triggeredPieceOnFloor();
+			return true;
 		} else {
 			console.log("Just redrawing grid because no bottom hit")
 			selfCopy.redrawGrid();
 		}
+		return false;
 	}
 
 	this.triggeredPieceOnFloor = function() {
