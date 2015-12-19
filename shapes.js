@@ -1761,7 +1761,7 @@ function ActivePiece(passedType) {
     	//0 will be left, 1 will be right
     	if (dir == 0) {
     		if (this.type == 0) {
-    			//do nothing - might change later
+    			//do nothing - it's a square
     		}
     		else if (this.type == 1) {
     			this.activePiece.rotateLeftLLeftOne();
@@ -1784,7 +1784,7 @@ function ActivePiece(passedType) {
     	}
     	else if (dir == 1) {
 	    		if (this.type == 0) {
-	    			//do nothing - might change later
+	    			//do nothing - it's a square
 	    		}
 	    		else if (this.type == 1) {
 	    			//do nothing - might change later

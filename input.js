@@ -24,6 +24,12 @@ this.rotateButton = {
         if(event.keyCode == 38) {
             self.gameCopy.executeRotatePiece(0);
         }
+        else if(event.keyCode == 90) {
+            self.gameCopy.executeRotatePiece(0);
+        }
+        else if(event.keyCode == 88) {
+            self.gameCopy.executeRotatePiece(1);
+        }
     }
 };
 
