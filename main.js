@@ -1,8 +1,5 @@
 var test = new Tetris();
 test.startGameLoop();
-updateScore(30);
-updateLines(30);
-updateLeve(30);
 
 //var mainGame = new GameInterface();
 //mainGame.startGame();

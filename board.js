@@ -78,7 +78,6 @@ function checkLineEmpty(rowNum) {
 
 function scoreAllLines() {
 	var scoringDictionary = [0, 40, 100, 300, 1200];
-	//FIXME: Don't redeclare the array every time...though there's no good place to put it for now
 	numberRowsCleared = 0;
 	for (var i = 0; i < arrayHeight; i++) {
 		if (checkLineFull(i) == true) {

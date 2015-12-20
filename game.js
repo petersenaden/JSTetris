@@ -2,7 +2,7 @@ function GameInterface()
 {
 	this.currPiece; //Current tetromino
 	this.gameScore = 0;
-	this.currentLevel = 0;
+	this.currentLevel = 1;
 	this.linesCleared = 0;
 	this.gravityDelay = 2100;
 	this.gravityDelayIncreaseInterval = 100;
@@ -129,11 +129,13 @@ function GameInterface()
 		selfCopy.redrawGrid();
 		selfCopy.createRandomPiece();
 		selfCopy.engageAllKeyboardControls();
+		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel);
 	}
 
 	this.checkAndIncreaseLevel = function(numSingleTimesLinesCleared) {
 		var lineIncreaseBoundary = 10;
 		if ((selfCopy.linesCleared % lineIncreaseBoundary) + numSingleTimesLinesCleared >= lineIncreaseBoundary) {
+			selfCopy.currentLevel = selfCopy.currentLevel + 1;
 			selfCopy.decreaseGravityTimer();
 		}
 		selfCopy.linesCleared = selfCopy.linesCleared + numSingleTimesLinesCleared;
