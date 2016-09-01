@@ -1,9 +1,9 @@
-function updateAllMetrics(currScore, currLines, currLevel) {
+function updateAllMetrics(currScore, currLines, currLevel, nextPiece) {
 	clearScoreBoard();
 	updateLevel(currLevel);
 	updateLines(currLines);
 	updateScore(currScore);
-	updateNextPieceDisplay(currScore);
+	updateNextPieceDisplay(nextPiece);
 }
 
 function clearScoreBoard() {
@@ -38,13 +38,21 @@ function updateScore(currScore) {
 
 }
 
-function updateNextPieceDisplay(currScore) {
+function updateNextPieceDisplay(nextPiece) {
 	//ERROR CHECK THESE
+	console.log("The next piece will be: " + nextPiece);
 	var canvas = document.getElementById("scoreBoard");
 	var ctx = canvas.getContext("2d");
 	base_image = new Image();
     base_image.onload = function() {
-    	ctx.drawImage(base_image, 10, 325, 400, 400);
+    	if (nextPiece == 2) {
+    	ctx.drawImage(base_image, 10, 325, 400, 400); }
     	}
-  	base_image.src = "1472647321248.jpg";
+  	base_image.src = "1.jpg";
+  	gase_image = new Image();
+    gase_image.onload = function() {
+    	if (nextPiece == 1) {
+    	ctx.drawImage(gase_image, 10, 325, 400, 400); }
+    	}
+  	gase_image.src = "2.jpg";
 }

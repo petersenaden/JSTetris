@@ -2,6 +2,7 @@ function GameInterface()
 {
 	this.currPiece; //Current tetromino
 	this.gameScore = 0;
+	this.nextPieceType = Math.floor((Math.random() * 7) + 1) - 1;
 	this.currentLevel = 1;
 	this.linesCleared = 0;
 	this.gravityDelay = 2100;
@@ -12,7 +13,7 @@ function GameInterface()
 
 	this.startGame = function() {
 		createTetrisGrid();
-		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel);
+		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
 		//Needed here in order to display the scoreboard from the get-go
 	}
 
@@ -77,7 +78,8 @@ function GameInterface()
 	}
 
 	this.createRandomPiece = function() {
-		pieceType = Math.floor((Math.random() * 7) + 1) - 1;
+		pieceType = selfCopy.nextPieceType;//
+		selfCopy.nextPieceType = Math.floor((Math.random() * 7) + 1) - 1;
 		console.log("Dropping piece: " + pieceType);
 		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();
@@ -131,7 +133,7 @@ function GameInterface()
 		selfCopy.redrawGrid();
 		selfCopy.createRandomPiece();
 		selfCopy.engageAllKeyboardControls();
-		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel);
+		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
 	}
 
 	this.checkAndIncreaseLevel = function(numSingleTimesLinesCleared) {
