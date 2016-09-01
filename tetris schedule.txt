@@ -2,6 +2,8 @@ TODO
 *Finish right rotations, hookup Z/X keys
 *Establish right-hand canvas, hookup lines, score, and level
 Establish next-piece preview, hookup next-piece into code
+//Next piece code is in game.js. It will be trivial to pass the value in there
+//into the uiboard function which can display the correct piece in the box
 Establish loss condition
 Establish sounds, pause screen, initial screen with level chooser
 Establish animation for row clear
