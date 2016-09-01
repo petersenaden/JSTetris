@@ -43,16 +43,53 @@ function updateNextPieceDisplay(nextPiece) {
 	console.log("The next piece will be: " + nextPiece);
 	var canvas = document.getElementById("scoreBoard");
 	var ctx = canvas.getContext("2d");
-	base_image = new Image();
-    base_image.onload = function() {
-    	if (nextPiece == 2) {
-    	ctx.drawImage(base_image, 10, 325, 400, 400); }
+
+	image_0 = new Image();
+    image_0.onload = function() {
+    	if (nextPiece == 0) {
+    	ctx.drawImage(image_0, 10, 325, 400, 400); }
     	}
-  	base_image.src = "1.jpg";
-  	gase_image = new Image();
-    gase_image.onload = function() {
+  	image_0.src = "images/0.jpg";
+
+  	image_1 = new Image();
+    image_1.onload = function() {
     	if (nextPiece == 1) {
-    	ctx.drawImage(gase_image, 10, 325, 400, 400); }
+    	ctx.drawImage(image_1, 10, 325, 400, 400); }
     	}
-  	gase_image.src = "2.jpg";
+  	image_1.src = "images/1.jpg";
+
+  	image_2 = new Image();
+    image_2.onload = function() {
+    	if (nextPiece == 2) {
+    	ctx.drawImage(image_2, 10, 325, 400, 400); }
+    	}
+  	image_2.src = "images/2.jpg";
+
+  	image_3 = new Image();
+    image_3.onload = function() {
+    	if (nextPiece == 3) {
+    	ctx.drawImage(image_3, 10, 325, 400, 400); }
+    	}
+  	image_3.src = "images/3.jpg";
+
+  	image_4 = new Image();
+    image_4.onload = function() {
+    	if (nextPiece == 4) {
+    	ctx.drawImage(image_4, 10, 325, 400, 400); }
+    	}
+  	image_4.src = "images/4.jpg";
+
+  	image_5 = new Image();
+    image_5.onload = function() {
+    	if (nextPiece == 5) {
+    	ctx.drawImage(image_5, 10, 325, 400, 400); }
+    	}
+  	image_5.src = "images/5.jpg";
+
+  	image_6 = new Image();
+    image_6.onload = function() {
+    	if (nextPiece == 6) {
+    	ctx.drawImage(image_6, 10, 325, 400, 400); }
+    	}
+  	image_6.src = "images/6.jpg";
 }
