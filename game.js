@@ -12,6 +12,8 @@ function GameInterface()
 
 	this.startGame = function() {
 		createTetrisGrid();
+		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel);
+		//Needed here in order to display the scoreboard from the get-go
 	}
 
 	this.engageAllKeyboardControls = function() {

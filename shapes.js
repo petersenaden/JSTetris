@@ -58,8 +58,7 @@ function detectCollision(one, two, three, four) {
 	return 0;
 }
 
-function Square()
-{
+function Square() {
 	this.one = [0,0];
 	this.two = [0,0];
 	this.three = [0,0];
