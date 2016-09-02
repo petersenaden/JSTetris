@@ -2,6 +2,7 @@ TODO
 *Finish right rotations, hookup Z/X keys
 *Establish right-hand canvas, hookup lines, score, and level
 *Establish next-piece preview, hookup next-piece into code
+*Establish loss condition
 Establish sounds, pause screen, initial screen with level chooser
 Establish animation for row clear
 Add click to mute, click to pause/unpause
@@ -9,4 +10,3 @@ Add phone controls
 Slap logo on everything, call it funtris
 code cleanup, turn OO, retrospective, readme
 clean up the next-piece images
-Establish loss condition (board may need to be resized)

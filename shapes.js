@@ -82,6 +82,8 @@ function Square() {
 			this.three = [width,2];
 			this.four = [width+1,2];
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -189,6 +191,8 @@ function LeftL() {
 			this.four = [width+2,2]; //tail
 			this.orientation = 3;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -593,6 +597,8 @@ function RightL() {
 			this.four = [width,2];
 			this.orientation = 1;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -990,6 +996,8 @@ function TPiece() {
 			this.four = [width-1,2]; //tail
 			this.orientation = 2;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -1399,6 +1407,8 @@ function SPiece() {
 			this.four = [width+1,1]; //tail
 			this.orientation = 0;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -1658,6 +1668,8 @@ function ZPiece() {
 			this.four = [width,1]; 
 			this.orientation = 0;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -1919,6 +1931,8 @@ function LongPiece() {
 			this.four = [width+2,1]; 
 			this.orientation = 3;
 			this.reflectInColorGrid();
+		} else {
+			return false;
 		}
 	}
 
@@ -2180,25 +2194,25 @@ function ActivePiece(passedType) {
 
     this.drawPiece = function() {
 		if (this.type == 0) {
-	    	this.activePiece.drawSquareTop();
+	    	return this.activePiece.drawSquareTop();
 	    }
 	    else if (this.type == 1) {
-	    	this.activePiece.drawLeftLTop();
+	    	return this.activePiece.drawLeftLTop();
 	    }
 	    else if (this.type == 2) {
-	    	this.activePiece.drawRightLTop();
+	    	return this.activePiece.drawRightLTop();
 	    }
 	    else if (this.type == 3) {
-	    	this.activePiece.drawTPieceTop();
+	    	return this.activePiece.drawTPieceTop();
 	    }
 	    else if (this.type == 4) {
-	    	this.activePiece.drawSPieceTop();
+	    	return this.activePiece.drawSPieceTop();
 	    }
 	    else if (this.type == 5) {
-	    	this.activePiece.drawZPieceTop();
+	    	return this.activePiece.drawZPieceTop();
 	    }
 	    else if (this.type == 6) {
-	    	this.activePiece.drawLongPieceTop();
+	    	return this.activePiece.drawLongPieceTop();
 	    }
     }
 

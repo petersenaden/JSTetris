@@ -82,7 +82,10 @@ function GameInterface()
 		selfCopy.nextPieceType = Math.floor((Math.random() * 7) + 1) - 1;
 		console.log("Dropping piece: " + pieceType);
 		this.currPiece = new ActivePiece(pieceType);
-		this.currPiece.drawPiece();
+		if (this.currPiece.drawPiece() == false) {
+			this.redrawGrid(); //MAYBE A BAD LINE
+			return this.beginGameOverState();
+		}
 		this.redrawGrid();
 	}
  
@@ -131,7 +134,9 @@ function GameInterface()
 		clearFullLines();
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
-		selfCopy.createRandomPiece();
+		if (selfCopy.createRandomPiece() == false) {
+			return;
+		}
 		selfCopy.engageAllKeyboardControls();
 		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
 	}
@@ -156,12 +161,18 @@ function GameInterface()
 		selfCopy.setGameGravityTimer(selfCopy.gravityDelay - selfCopy.gravityDelayIncreaseInterval);
 	}
 
-	this.setGameGravityTimer = function(delayTimeGravity) {
+	this.setGameGravityTimer = function(delayTimeGravity = 2000) {
 		selfCopy.autoGravityInterval = setInterval(selfCopy.pullPieceDownOne, delayTimeGravity);
 	}
 
 	this.clearGameGravityTimer = function() {
 		clearInterval(selfCopy.autoGravityInterval);
+	}
+
+	this.beginGameOverState = function() {
+		this.clearGameGravityTimer();
+		selfCopy.suppressAllKeyboardControls();
+		return false;
 	}
 
 }
