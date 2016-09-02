@@ -14,6 +14,19 @@ function GameInterface()
 	this.startGame = function() {
 		createTetrisGrid();
 		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
+		selfCopy.createRandomPiece();
+        selfCopy.engageAllKeyboardControls();
+        selfCopy.setGameGravityTimer();
+		//Needed here in order to display the scoreboard from the get-go
+	}
+
+	this.restartGame = function(desiredLevel = 1) {
+		selfCopy.gameScore = 0;
+		selfCopy.linesCleared = 0;
+		selfCopy.currentLevel = desiredLevel;
+		selfCopy.nextPieceType = Math.floor((Math.random() * 7) + 1) - 1;
+		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
+		selfCopy.startGame();
 		//Needed here in order to display the scoreboard from the get-go
 	}
 
@@ -110,7 +123,7 @@ function GameInterface()
 	this.executeHardDropPiece = function() {
 		//could trigger an infinite loop
 		while (!this.pullPieceDownOne());
-		this.redrawGrid();
+		//this.redrawGrid();
 	}
 
 	this.pullPieceDownOne = function() {
@@ -135,6 +148,7 @@ function GameInterface()
 		applyGravityToBoard();
 		selfCopy.redrawGrid();
 		if (selfCopy.createRandomPiece() == false) {
+			selfCopy.showGameOverScreen();
 			return;
 		}
 		selfCopy.engageAllKeyboardControls();
@@ -173,6 +187,15 @@ function GameInterface()
 		this.clearGameGravityTimer();
 		selfCopy.suppressAllKeyboardControls();
 		return false;
+	}
+
+	this.showGameOverScreen = function() {
+		console.log("In the important place now");
+		var canvas = document.getElementById("tetrisBoard");
+		var ctx = canvas.getContext("2d");
+		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
+		ctx.fillStyle = "#000000";
+		ctx.fillRect(29, 29, 242, 482);
 	}
 
 }
