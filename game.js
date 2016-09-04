@@ -206,6 +206,13 @@ function GameInterface()
 		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
 		ctx.fillStyle = "#000000";
 		ctx.fillRect(29, 29, 242, 482); //one pixel better to look better around the block borders
+
+		ctx.font = "30px Impact";
+		context.fillStyle = "red";
+		ctx.fillText("Press spacebar",50,240);
+		ctx.fillText("to restart", 50, 280);
+		//I can't believe canvas doesn't have newline support
+
 		selfCopy.engageRestartGameControls();
 	}
 
