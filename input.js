@@ -57,6 +57,22 @@ this.restartGameButton = {
     }
 };
 
+this.pauseGameButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 80) {
+            self.gameCopy.pauseGame();
+        }
+    }
+};
+
+this.unpauseGameButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 80) {
+            self.gameCopy.unpauseGame();
+        }
+    }
+};
+
 this.turnOnShifterButtons = function(gameCopy) {
     document.getElementById("tetrisBoard").addEventListener('keydown', this.shifterButtons);
     }
@@ -95,6 +111,22 @@ this.turnOnRestartGameButton = function(gameCopy) {
 
 this.turnOffRestartGameButton = function(gameCopy) {
     document.getElementById("tetrisBoard").removeEventListener('keydown', this.restartGameButton);
+    }
+
+this.turnOnPauseGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.pauseGameButton);
+    }
+
+this.turnOffPauseGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.pauseGameButton);
+    }
+
+this.turnOnUnpauseGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.unpauseGameButton);
+    }
+
+this.turnOffUnpauseGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.unpauseGameButton);
     }
 
 }

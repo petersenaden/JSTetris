@@ -30,11 +30,26 @@ function GameInterface()
 		selfCopy.startGame();
 	}
 
+	this.pauseGame = function() {
+		selfCopy.suppressAllKeyboardControls();
+		selfCopy.clearGameGravityTimer();
+		selfCopy.showPauseScreen();
+		selfCopy.engageUnpauseGameControls();
+	}
+
+	this.unpauseGame = function() {
+		selfCopy.suppressUnpauseGameControls();
+		selfCopy.setGameGravityTimer();
+		this.redrawGrid();
+		selfCopy.engageAllKeyboardControls();
+	}
+
 	this.engageAllKeyboardControls = function() {
 		selfCopy.engageDropKeyboardControls();
 		selfCopy.engageShifterKeyboardControls();
 		selfCopy.engageRotationKeyboardControls();
 		selfCopy.engageHardDropKeyboardControls();
+		selfCopy.engagePauseGameControls();
 	}
 
 	this.suppressAllKeyboardControls = function() {
@@ -92,6 +107,26 @@ function GameInterface()
 	this.suppressRestartGameControls = function() {
 		this.controls.setGamePiece(selfCopy);
 		this.controls.turnOffRestartGameButton();
+	}
+
+	this.engagePauseGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnPauseGameButton();
+	}
+
+	this.suppressPauseGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffPauseGameButton();
+	}
+
+	this.engageUnpauseGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnUnpauseGameButton();
+	}
+
+	this.suppressUnpauseGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffUnpauseGameButton();
 	}
 
 	this.redrawGrid = function() {
@@ -200,7 +235,6 @@ function GameInterface()
 	}
 
 	this.showGameOverScreen = function() {
-		console.log("In the important place now");
 		var canvas = document.getElementById("tetrisBoard");
 		var ctx = canvas.getContext("2d");
 		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
@@ -217,11 +251,35 @@ function GameInterface()
 
 		ctx.font = "30px Impact";
 		ctx.fillStyle = "#000000";
-		ctx.fillText("Press n",50,240);
+		ctx.fillText("Press 'N'",50,240);
 		ctx.fillText("to restart", 50, 280);
 		//I can't believe canvas doesn't have newline support
 
 		selfCopy.engageRestartGameControls();
+	}
+
+	this.showPauseScreen = function() {
+		var canvas = document.getElementById("tetrisBoard");
+		var ctx = canvas.getContext("2d");
+		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
+		ctx.fillStyle = "#F0FFFF";
+		ctx.fillRect(29, 29, 242, 482); //one pixel better to look better around the block borders
+
+		ctx.strokeStyle = "#0"; //border will be hardcoded black for now
+		ctx.lineWidth=15;
+		ctx.strokeRect(29, 29, 242, 482);
+		ctx.lineWidth=1;
+		//this line makes sure the blocks
+		//won't end up with laughably thick
+		//borders
+
+		ctx.font = "30px Impact";
+		ctx.fillStyle = "#000000";
+		ctx.fillText("Press 'P'",50,240);
+		ctx.fillText("to unpause", 50, 280);
+		//I can't believe canvas doesn't have newline support
+
+		//selfCopy.engageRestartGameControls();
 	}
 
 }
