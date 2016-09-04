@@ -21,13 +21,13 @@ function GameInterface()
 	}
 
 	this.restartGame = function(desiredLevel = 1) {
+		selfCopy.suppressRestartGameControls();
 		selfCopy.gameScore = 0;
 		selfCopy.linesCleared = 0;
 		selfCopy.currentLevel = desiredLevel;
 		selfCopy.nextPieceType = Math.floor((Math.random() * 7) + 1) - 1;
 		updateAllMetrics(selfCopy.gameScore, selfCopy.linesCleared, selfCopy.currentLevel, selfCopy.nextPieceType);
 		selfCopy.startGame();
-		//Needed here in order to display the scoreboard from the get-go
 	}
 
 	this.engageAllKeyboardControls = function() {
@@ -82,6 +82,16 @@ function GameInterface()
 	this.suppressRotationKeyboardControls = function() {
 		this.controls.setGamePiece(selfCopy);
 		this.controls.turnOffRotationButtons();
+	}
+
+	this.engageRestartGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnRestartGameButton();
+	}
+
+	this.suppressRestartGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffRestartGameButton();
 	}
 
 	this.redrawGrid = function() {
@@ -195,7 +205,8 @@ function GameInterface()
 		var ctx = canvas.getContext("2d");
 		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
 		ctx.fillStyle = "#000000";
-		ctx.fillRect(29, 29, 242, 482);
+		ctx.fillRect(29, 29, 242, 482); //one pixel better to look better around the block borders
+		selfCopy.engageRestartGameControls();
 	}
 
 }

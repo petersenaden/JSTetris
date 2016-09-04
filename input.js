@@ -49,6 +49,14 @@ this.hardDropButton = {
     }
 };
 
+this.restartGameButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 78) {
+            self.gameCopy.restartGame();
+        }
+    }
+};
+
 this.turnOnShifterButtons = function(gameCopy) {
     document.getElementById("tetrisBoard").addEventListener('keydown', this.shifterButtons);
     }
@@ -81,5 +89,12 @@ this.turnOffHardDropButton = function(gameCopy) {
     document.getElementById("tetrisBoard").removeEventListener('keydown', this.hardDropButton);
     }
 
+this.turnOnRestartGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.restartGameButton);
+    }
+
+this.turnOffRestartGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.restartGameButton);
+    }
 
 }
