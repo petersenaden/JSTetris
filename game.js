@@ -9,6 +9,7 @@ function GameInterface()
 	this.gravityDelayIncreaseInterval = 100;
 	this.autoGravityInterval;
 	this.controls = new PlayerInput();
+    this.sounds = new SoundActivation();
 	var selfCopy = this;
 
 	this.startGame = function() {
@@ -156,6 +157,7 @@ function GameInterface()
  
 	this.executeRotatePiece = function(dir) {
 		//0 left, 1 right
+		this.sounds.playClickSound();
 		this.currPiece.rotatePiece(dir);
 		this.redrawGrid();
 	}
@@ -169,6 +171,8 @@ function GameInterface()
 		//could trigger an infinite loop
 		while (!this.pullPieceDownOne());
 		//this.redrawGrid();
+		//Don't redraw the grid or the game over
+		//screen won't show
 	}
 
 	this.pullPieceDownOne = function() {
@@ -184,9 +188,20 @@ function GameInterface()
 		return false;
 	}
 
+	this.determineIfClearedSoundPlays = function(rowsCleared) {
+		if (rowsCleared == 4) {
+			this.sounds.playRowTetrisSound();
+		} else if (rowsCleared > 0) {
+			this.sounds.playRowClearSound();
+		} else {
+			this.sounds.playDropSound();
+		}
+	}
+
 	this.triggeredPieceOnFloor = function() {
 		selfCopy.suppressAllKeyboardControls();
 		calculatedValues = scoreAllLines();
+		selfCopy.determineIfClearedSoundPlays(calculatedValues[1]);
 		selfCopy.gameScore  = selfCopy.gameScore + calculatedValues[0];
 		selfCopy.checkAndIncreaseLevel(calculatedValues[1]);
 		clearFullLines();
@@ -231,6 +246,7 @@ function GameInterface()
 	this.beginGameOverState = function() {
 		this.clearGameGravityTimer();
 		selfCopy.suppressAllKeyboardControls();
+		this.sounds.playGameOverSound();
 		return false;
 	}
 

@@ -3,7 +3,9 @@ TODO
 *Establish right-hand canvas, hookup lines, score, and level
 *Establish next-piece preview, hookup next-piece into code
 *Establish loss condition
-Establish sounds, pause screen, initial screen with level chooser
+*Establish pause screen
+*Establish sounds
+Establish initial screen with level chooser (maybe)
 Establish animation for row clear
 Add click to mute, click to pause/unpause
 Add phone controls
