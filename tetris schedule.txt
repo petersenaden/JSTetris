@@ -10,3 +10,10 @@ Add phone controls
 Slap logo on everything, call it funtris
 code cleanup, turn OO, retrospective, readme
 clean up the next-piece images
+
+//today do a pause screen with what's been done
+//do some quick sounds - I left the pages up
+//Maybe make a level chooser. real easy.
+//animation for row clear is easy. make sure to suppress keyboard controls while doing so and remove interval for gravity.
+//finally get the next piece images done on a a new canvas.
+//really this can be finished by tomorrow

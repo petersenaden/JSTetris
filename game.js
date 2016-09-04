@@ -204,12 +204,20 @@ function GameInterface()
 		var canvas = document.getElementById("tetrisBoard");
 		var ctx = canvas.getContext("2d");
 		//ctx.clearRect(0, 0, canvas.width, canvas.height); //useful line to clear menu after use
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#F0FFFF";
 		ctx.fillRect(29, 29, 242, 482); //one pixel better to look better around the block borders
 
+		ctx.strokeStyle = "#0"; //border will be hardcoded black for now
+		ctx.lineWidth=15;
+		ctx.strokeRect(29, 29, 242, 482);
+		ctx.lineWidth=1;
+		//this line makes sure the blocks
+		//won't end up with laughably thick
+		//borders
+
 		ctx.font = "30px Impact";
-		context.fillStyle = "red";
-		ctx.fillText("Press spacebar",50,240);
+		ctx.fillStyle = "#000000";
+		ctx.fillText("Press n",50,240);
 		ctx.fillText("to restart", 50, 280);
 		//I can't believe canvas doesn't have newline support
 
