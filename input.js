@@ -74,7 +74,7 @@ this.unpauseGameButton = {
             self.gameCopy.unpauseGame();
         }
         if(event.keyCode == 72) { //h
-            self.gameCopy.pauseGame();
+            self.gameCopy.unpauseGame();
         }
     }
 };
