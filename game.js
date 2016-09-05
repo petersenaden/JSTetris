@@ -231,7 +231,7 @@ function GameInterface()
 	}
 
 	this.checkAndIncreaseLevel = function(numSingleTimesLinesCleared) {
-		var lineIncreaseBoundary = 10;
+		var lineIncreaseBoundary = 1;
 		if ((selfCopy.linesCleared % lineIncreaseBoundary) + numSingleTimesLinesCleared >= lineIncreaseBoundary) {
 			selfCopy.currentLevel = selfCopy.currentLevel + 1;
 			selfCopy.decreaseGravityTimer();
