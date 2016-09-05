@@ -4,8 +4,20 @@ function updateAllMetrics(currScore, currLines, currLevel, nextPiece) {
 	updateLines(currLines);
 	updateScore(currScore);
   showHelpMessage();
+  displayLogo();
 	updateNextPieceDisplay(nextPiece);
 }
+
+
+function displayLogo() {
+  var canvas = document.getElementById("scoreBoard");
+  var context = canvas.getContext("2d");
+  image_0 = new Image();
+  image_0.onload = function() {
+    context.drawImage(image_0, 0, 0, width = 260, height = 140); }
+  image_0.src = "images/logo.gif";
+}
+
 
 function clearScoreBoard() {
 	var scoreCanvas = document.getElementById("scoreBoard");
