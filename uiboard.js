@@ -15,7 +15,7 @@ function displayLogo() {
   image_0 = new Image();
   image_0.onload = function() {
     context.drawImage(image_0, 0, 0, width = 260, height = 140); }
-  image_0.src = "images/logo.gif";
+  image_0.src = "http://i.imgur.com/kRtaAdM.gif";
 }
 
 
