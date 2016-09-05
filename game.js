@@ -306,8 +306,16 @@ function GameInterface()
 
 		ctx.font = "30px Impact";
 		ctx.fillStyle = "#000000";
-		ctx.fillText("Press 'P'",50,240);
-		ctx.fillText("to unpause", 50, 280);
+		ctx.fillText("Press 'P'",50,100);
+		ctx.fillText("to unpause", 50, 130);
+
+		ctx.fillText("'M' to mute",50,190);
+		ctx.fillText("'Z/X/Up'", 50, 250);
+		ctx.fillText("to rotate", 50, 280);
+		ctx.fillText("'Down/Left/Right'", 50, 340);
+		ctx.fillText("to shift", 50, 370);
+		ctx.fillText("'Space'", 50, 430);
+		ctx.fillText("to hard drop", 50, 460);
 		//I can't believe canvas doesn't have newline support
 
 		//selfCopy.engageRestartGameControls();

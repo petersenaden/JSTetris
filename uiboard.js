@@ -3,6 +3,7 @@ function updateAllMetrics(currScore, currLines, currLevel, nextPiece) {
 	updateLevel(currLevel);
 	updateLines(currLines);
 	updateScore(currScore);
+  showHelpMessage();
 	updateNextPieceDisplay(nextPiece);
 }
 
@@ -11,6 +12,14 @@ function clearScoreBoard() {
 	var scoreContext = scoreCanvas.getContext("2d");
 	scoreContext.beginPath();
 	scoreContext.clearRect(0, 0, scoreCanvas.width, scoreCanvas.height);
+}
+
+function showHelpMessage() {
+  //ERROR CHECK THESE
+  var canvas = document.getElementById("scoreBoard");
+  var ctx = canvas.getContext("2d");
+  ctx.font = "30px Impact";
+  ctx.fillText("Press 'H' for help", 10, 500);
 }
 
 function updateLevel(currLevel) {

@@ -5,13 +5,11 @@ TODO
 *Establish loss condition
 *Establish pause screen
 *Establish sounds
-Establish initial screen with level chooser (maybe)
+-Establish initial screen with level chooser
 -Establish animation for row clear
 *Add mute key
 Add click to pause/unpause
 Add phone controls
 Slap logo on everything, call it funtris
 code cleanup, retrospective, readme
-clean up the next-piece images
-
-//just do the next piece preview
+*clean up the next-piece images

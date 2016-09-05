@@ -62,6 +62,9 @@ this.pauseGameButton = {
         if(event.keyCode == 80) {
             self.gameCopy.pauseGame();
         }
+        if(event.keyCode == 72) {
+            self.gameCopy.pauseGame();
+        }
     }
 };
 
@@ -69,6 +72,9 @@ this.unpauseGameButton = {
     handleEvent: function (event) {
         if(event.keyCode == 80) {
             self.gameCopy.unpauseGame();
+        }
+        if(event.keyCode == 72) { //h
+            self.gameCopy.pauseGame();
         }
     }
 };
