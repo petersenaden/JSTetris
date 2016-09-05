@@ -45,118 +45,106 @@ function updateNextPieceDisplay(nextPiece) {
 	var context = canvas.getContext("2d");
 
   context.strokeStyle = "#0"; //border will be hardcoded black for now
-  context.strokeRect(0, 320, 120, 120);
+  context.strokeRect(0, 320, 180, 120);
 
     if (nextPiece == 0) {
           var tempHolder = context.fillStyle;
           context.fillStyle = '#FF69B4';
-          context.fillRect(0, 320, 30, 30);
-          context.strokeRect(0, 320, 30, 30);
-
           context.fillRect(30, 350, 30, 30);
           context.strokeRect(30, 350, 30, 30);
 
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
+          context.fillRect(60, 380, 30, 30);
+          context.strokeRect(60, 380, 30, 30);
 
-          context.fillRect(30, 320, 30, 30);
-          context.strokeRect(30, 320, 30, 30);
+          context.fillRect(30, 380, 30, 30);
+          context.strokeRect(30, 380, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
           context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
-
-    if (nextPiece == 1) {
+    } else if (nextPiece == 1) {
           var tempHolder = context.fillStyle;
           context.fillStyle = '#008080';
-          context.fillRect(0, 320, 30, 30);
-          context.strokeRect(0, 320, 30, 30);
-
           context.fillRect(30, 350, 30, 30);
           context.strokeRect(30, 350, 30, 30);
 
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
+          context.fillRect(60, 380, 30, 30);
+          context.strokeRect(60, 380, 30, 30);
 
-          context.fillRect(60, 350, 30, 30);
-          context.strokeRect(60, 350, 30, 30);
+          context.fillRect(30, 380, 30, 30);
+          context.strokeRect(30, 380, 30, 30);
+
+          context.fillRect(90, 380, 30, 30);
+          context.strokeRect(90, 380, 30, 30);
           context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
-
-    if (nextPiece == 2) {
+    } else if (nextPiece == 2) {
           var tempHolder = context.fillStyle;
           context.fillStyle = '#ADFF2F';
-          context.fillRect(0, 380, 30, 30);
-          context.strokeRect(0, 380, 30, 30);
+          context.fillRect(30, 380, 30, 30);
+          context.strokeRect(30, 380, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
 
           context.fillRect(30, 350, 30, 30);
           context.strokeRect(30, 350, 30, 30);
 
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
-
-          context.fillRect(60, 350, 30, 30);
-          context.strokeRect(60, 350, 30, 30);
+          context.fillRect(90, 350, 30, 30);
+          context.strokeRect(90, 350, 30, 30);
           context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
-
-    if (nextPiece == 3) {
+    } else if (nextPiece == 3) {
           var tempHolder = context.fillStyle;
           context.fillStyle = '#F0E68C';
-          context.fillRect(30, 320, 30, 30);
-          context.strokeRect(30, 320, 30, 30);
-
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
-
-          context.fillRect(30, 350, 30, 30);
-          context.strokeRect(30, 350, 30, 30);
-
           context.fillRect(60, 350, 30, 30);
           context.strokeRect(60, 350, 30, 30);
-          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
 
-    if (nextPiece == 4) {
+          context.fillRect(30, 380, 30, 30);
+          context.strokeRect(30, 380, 30, 30);
+
+          context.fillRect(60, 380, 30, 30);
+          context.strokeRect(60, 380, 30, 30);
+
+          context.fillRect(90, 380, 30, 30);
+          context.strokeRect(90, 380, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    } else if (nextPiece == 4) {
           var tempHolder = context.fillStyle;
           context.fillStyle = "#6A5ACD";
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
+          context.fillRect(30, 380, 30, 30);
+          context.strokeRect(30, 380, 30, 30);
 
-          context.fillRect(30, 320, 30, 30);
-          context.strokeRect(30, 320, 30, 30);
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
 
-          context.fillRect(30, 350, 30, 30);
-          context.strokeRect(30, 350, 30, 30);
+          context.fillRect(60, 380, 30, 30);
+          context.strokeRect(60, 380, 30, 30);
 
-          context.fillRect(60, 320, 30, 30);
-          context.strokeRect(60, 320, 30, 30);
+          context.fillRect(90, 350, 30, 30);
+          context.strokeRect(90, 350, 30, 30);
           context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
-
-    if (nextPiece == 5) {
+    } else if (nextPiece == 5) {
           var tempHolder = context.fillStyle;
           context.fillStyle = "#EE82EE";
-          context.fillRect(0, 320, 30, 30);
-          context.strokeRect(0, 320, 30, 30);
-
-          context.fillRect(30, 320, 30, 30);
-          context.strokeRect(30, 320, 30, 30);
-
           context.fillRect(30, 350, 30, 30);
           context.strokeRect(30, 350, 30, 30);
 
           context.fillRect(60, 350, 30, 30);
           context.strokeRect(60, 350, 30, 30);
-          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }
 
-    if (nextPiece == 6) {
+          context.fillRect(60, 380, 30, 30);
+          context.strokeRect(60, 380, 30, 30);
+
+          context.fillRect(90, 380, 30, 30);
+          context.strokeRect(90, 380, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    } else if (nextPiece == 6) {
           var tempHolder = context.fillStyle;
           context.fillStyle = "#191970";
-          context.fillRect(0, 350, 30, 30);
-          context.strokeRect(0, 350, 30, 30);
-
           context.fillRect(30, 350, 30, 30);
           context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(120, 350, 30, 30);
+          context.strokeRect(120, 350, 30, 30);
 
           context.fillRect(90, 350, 30, 30);
           context.strokeRect(90, 350, 30, 30);
