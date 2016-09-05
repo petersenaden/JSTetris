@@ -13,3 +13,5 @@ Add phone controls
 Slap logo on everything, call it funtris
 code cleanup, retrospective, readme
 *clean up the next-piece images
+
+http://petersenaden.github.io/tanuki1/nextPage.html
