@@ -18,7 +18,7 @@ function updateLevel(currLevel) {
 	var canvas = document.getElementById("scoreBoard");
 	var ctx = canvas.getContext("2d");
 	ctx.font = "30px Impact";
-	ctx.fillText("Level: " + currLevel, 10, 180);
+	ctx.fillText("Level:  0" + currLevel, 10, 180);
 }
 
 function updateLines(currLines) {
@@ -26,7 +26,7 @@ function updateLines(currLines) {
 	var canvas = document.getElementById("scoreBoard");
 	var ctx = canvas.getContext("2d");
 	ctx.font = "30px Impact";
-	ctx.fillText("Lines: " + currLines, 10, 240);
+	ctx.fillText("Lines:  " + currLines, 10, 240);
 }
 
 function updateScore(currScore) {
@@ -42,8 +42,20 @@ function updateNextPieceDisplay(nextPiece) {
 	//ERROR CHECK THESE
 	console.log("The next piece will be: " + nextPiece);
 	var canvas = document.getElementById("scoreBoard");
-	var ctx = canvas.getContext("2d");
+	var context = canvas.getContext("2d");
 
+  context.strokeStyle = "#0"; //border will be hardcoded black for now
+  context.strokeRect(0, 320, 120, 120);
+
+    if (nextPiece == 0) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = 'blue';
+          context.fillRect(0, 320, 30, 30);
+          context.strokeStyle = "#0"; //border will be hardcoded black for now
+          context.strokeRect(0, 320, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+/*
 	image_0 = new Image();
     image_0.onload = function() {
     	if (nextPiece == 0) {
@@ -91,5 +103,5 @@ function updateNextPieceDisplay(nextPiece) {
     	if (nextPiece == 6) {
     	ctx.drawImage(image_6, 10, 325, 400, 400); }
     	}
-  	image_6.src = "images/6.jpg";
+  	image_6.src = "images/6.jpg";*/
 }

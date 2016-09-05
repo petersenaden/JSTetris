@@ -6,11 +6,12 @@ TODO
 *Establish pause screen
 *Establish sounds
 Establish initial screen with level chooser (maybe)
-Establish animation for row clear
-Add click to mute, click to pause/unpause
+-Establish animation for row clear
+*Add mute key
+Add click to pause/unpause
 Add phone controls
 Slap logo on everything, call it funtris
-code cleanup, turn OO, retrospective, readme
+code cleanup, retrospective, readme
 clean up the next-piece images
 
 //today do a pause screen with what's been done

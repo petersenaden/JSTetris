@@ -50,6 +50,7 @@ function GameInterface()
 		selfCopy.engageShifterKeyboardControls();
 		selfCopy.engageRotationKeyboardControls();
 		selfCopy.engageHardDropKeyboardControls();
+		selfCopy.engageMuteGameControls();
 		selfCopy.engagePauseGameControls();
 	}
 
@@ -58,6 +59,7 @@ function GameInterface()
 		selfCopy.suppressShifterKeyboardControls();
 		selfCopy.suppressRotationKeyboardControls();
 		selfCopy.suppressHardDropKeyboardControls();
+		selfCopy.suppressMuteGameControls();
 	}
 
 	this.engageHardDropKeyboardControls = function() {
@@ -130,10 +132,24 @@ function GameInterface()
 		this.controls.turnOffUnpauseGameButton();
 	}
 
+	this.engageMuteGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOnMuteGameButton();
+	}
+
+	this.suppressMuteGameControls = function() {
+		this.controls.setGamePiece(selfCopy);
+		this.controls.turnOffMuteGameButton();
+	}
+
 	this.redrawGrid = function() {
 		//Can be made private when no longer needed for debugging
 		clearGrid();
 		plotMatrix();
+	}
+
+	this.muteGame = function() {
+		this.sounds.mute = !this.sounds.mute;
 	}
 
 	this.createRandomPiece = function() {
@@ -148,7 +164,6 @@ function GameInterface()
 		this.redrawGrid();
 	}
  
-
 	this.createPiece = function(pieceType) {
 		this.currPiece = new ActivePiece(pieceType);
 		this.currPiece.drawPiece();

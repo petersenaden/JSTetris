@@ -73,6 +73,22 @@ this.unpauseGameButton = {
     }
 };
 
+this.muteGameButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 77) {
+            self.gameCopy.muteGame();
+        }
+    }
+};
+
+this.unmuteGameButton = {
+    handleEvent: function (event) {
+        if(event.keyCode == 77) {
+            self.gameCopy.muteGame();
+        }
+    }
+};
+
 this.turnOnShifterButtons = function(gameCopy) {
     document.getElementById("tetrisBoard").addEventListener('keydown', this.shifterButtons);
     }
@@ -127,6 +143,14 @@ this.turnOnUnpauseGameButton = function(gameCopy) {
 
 this.turnOffUnpauseGameButton = function(gameCopy) {
     document.getElementById("tetrisBoard").removeEventListener('keydown', this.unpauseGameButton);
+    }
+
+this.turnOnMuteGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").addEventListener('keydown', this.muteGameButton);
+    }
+
+this.turnOffMuteGameButton = function(gameCopy) {
+    document.getElementById("tetrisBoard").removeEventListener('keydown', this.unmuteGameButton);
     }
 
 }

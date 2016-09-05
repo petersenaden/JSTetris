@@ -120,12 +120,3 @@ function dropLine(rowNum) {
 		colorGrid[i][rowNum - 1] = 0;
 	}
 }
-/*
-function checkForLossConditions() {
-	for (var i = 0; i < canvas.width / 30; i++) {
-		if (tetrisGrid[i][0] == 1) {
-			return true;
-			}
-		} 
-	return false;
-}*/
