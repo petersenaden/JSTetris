@@ -42,10 +42,10 @@ function updateNextPieceDisplay(nextPiece) {
 	//ERROR CHECK THESE
 	console.log("The next piece will be: " + nextPiece);
 	var canvas = document.getElementById("scoreBoard");
-	var context = canvas.getContext("2d");
+	var ctx = canvas.getContext("2d");
 
-  context.strokeStyle = "#0"; //border will be hardcoded black for now
-  context.strokeRect(0, 320, 120, 120);
+  //context.strokeStyle = "#0"; //border will be hardcoded black for now
+  //context.strokeRect(0, 320, 120, 120);
 /*
     if (nextPiece == 0) {
           var tempHolder = context.fillStyle;
