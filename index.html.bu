@@ -1,0 +1,44 @@
+<!DOCTYPE html>  <!--Used to specify which version of html this uses -->
+<html>
+
+	<head>
+		<meta charset="UTF-8"> <!--Provides helpful information to search engines-->
+		<meta name="description" content="Site to dick around with">
+		<meta name="keywords" content="Novice, beginner, scrub"> <!--Keywords for the search engine to parse -->
+		<meta name="author" content="Aden Petersen">
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> <!--used for favicon-->
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" type="text/css" href="styles.css"> <!--Adds in the CSS stuff from my styles.css file in this folder -->
+		<title>Tanuki1</title>
+	</head>
+
+		<body>
+			<div class="outer">
+			<h1>Luke Ginter&#39s Bomb Bazaar</h1>
+			</div>
+
+			<hr class="sepStyle">
+
+			<a href="nextPage.html"><h2>Second Page</h2></a>
+			<a href="thirdPage.html"><h2>Third Page</h2></a>
+
+			<hr class="sepStyle">
+
+			<button id="button1" type="button" name="barryTheButton">The Button</button>
+		<script>
+			var el = document.getElementById("button1");
+			if (el.addEventListener) //Only used to test whether or not addEventListener is supported
+		    el.addEventListener("click", clickedButton, false);
+			else if (el.attachEvent)
+		    el.attachEvent('onclick', clickedButton);
+				function clickedButton() {
+					document.write(5+7)
+				}
+		</script>
+
+		<p>First page</p>
+
+		</body>
+</html>

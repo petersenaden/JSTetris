@@ -2,43 +2,23 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8"> <!--Provides helpful information to search engines-->
-		<meta name="description" content="Site to dick around with">
-		<meta name="keywords" content="Novice, beginner, scrub"> <!--Keywords for the search engine to parse -->
-		<meta name="author" content="Aden Petersen">
-
+		<link rel="stylesheet" type="text/css" href="styles.css"> <!--Adds in the CSS stuff from my styles.css file in this folder -->
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> <!--used for favicon-->
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-
-		<link rel="stylesheet" type="text/css" href="styles.css"> <!--Adds in the CSS stuff from my styles.css file in this folder -->
 		<title>Tanuki1</title>
 	</head>
 
 		<body>
-			<div class="outer">
-			<h1>Luke Ginter&#39s Bomb Bazaar</h1>
-			</div>
-
-			<hr class="sepStyle">
-
-			<a href="nextPage.html"><h2>Second Page</h2></a>
-			<a href="thirdPage.html"><h2>Third Page</h2></a>
-
-			<hr class="sepStyle">
-
-			<button id="button1" type="button" name="barryTheButton">The Button</button>
-		<script>
-			var el = document.getElementById("button1");
-			if (el.addEventListener) //Only used to test whether or not addEventListener is supported
-		    el.addEventListener("click", clickedButton, false);
-			else if (el.attachEvent)
-		    el.attachEvent('onclick', clickedButton);
-				function clickedButton() {
-					document.write(5+7)
-				}
-		</script>
-
-		<p>First page</p>
+		<canvas id="tetrisBoard" width="300" height="540" tabindex= "1" style="border:1px solid #000000;"></canvas><!--Originally 500/700 -->
+		<canvas id="scoreBoard" width="300" height="540"></canvas><!--Originally 500/700 -->
+		<script type="text/javascript" src="shapes.js"></script>  <!--These lines will hopefully link the files together/make things nice-looking -->
+		<script type="text/javascript" src="sounds.js"></script>
+		<script type="text/javascript" src="input.js"></script>
+		<script type="text/javascript" src="game.js"></script>
+		<script type="text/javascript" src="board.js"></script>
+		<script type="text/javascript" src="tetris.js"></script>
+		<script type="text/javascript" src="uiboard.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 
 		</body>
 </html>
