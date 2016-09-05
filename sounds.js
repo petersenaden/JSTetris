@@ -2,7 +2,7 @@ function SoundActivation()
 {
     this.gameCopy; //reference copy of the game interface
     var self = this; //necessary because event handlers are a nightmare
-    this.mute = false; //true to mute all noise
+    this.mute = true; //true to mute all noise
 
     this.playClickSound = function(gameCopy) {
     	if (this.mute) {

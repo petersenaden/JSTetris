@@ -42,66 +42,129 @@ function updateNextPieceDisplay(nextPiece) {
 	//ERROR CHECK THESE
 	console.log("The next piece will be: " + nextPiece);
 	var canvas = document.getElementById("scoreBoard");
-	var ctx = canvas.getContext("2d");
+	var context = canvas.getContext("2d");
 
-  //context.strokeStyle = "#0"; //border will be hardcoded black for now
-  //context.strokeRect(0, 320, 120, 120);
-/*
+  context.strokeStyle = "#0"; //border will be hardcoded black for now
+  context.strokeRect(0, 320, 120, 120);
+
     if (nextPiece == 0) {
           var tempHolder = context.fillStyle;
-          context.fillStyle = 'blue';
+          context.fillStyle = '#FF69B4';
           context.fillRect(0, 320, 30, 30);
-          context.strokeStyle = "#0"; //border will be hardcoded black for now
           context.strokeRect(0, 320, 30, 30);
+
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
+
+          context.fillRect(30, 320, 30, 30);
+          context.strokeRect(30, 320, 30, 30);
           context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
-    }*/
+    }
 
-	image_0 = new Image();
-    image_0.onload = function() {
-    	if (nextPiece == 0) {
-    	ctx.drawImage(image_0, 10, 325, 400, 400); }
-    	}
-  	image_0.src = "images/0.jpg";
+    if (nextPiece == 1) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = '#008080';
+          context.fillRect(0, 320, 30, 30);
+          context.strokeRect(0, 320, 30, 30);
 
-  	image_1 = new Image();
-    image_1.onload = function() {
-    	if (nextPiece == 1) {
-    	ctx.drawImage(image_1, 10, 325, 400, 400); }
-    	}
-  	image_1.src = "images/1.jpg";
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
 
-  	image_2 = new Image();
-    image_2.onload = function() {
-    	if (nextPiece == 2) {
-    	ctx.drawImage(image_2, 10, 325, 400, 400); }
-    	}
-  	image_2.src = "images/2.jpg";
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
 
-  	image_3 = new Image();
-    image_3.onload = function() {
-    	if (nextPiece == 3) {
-    	ctx.drawImage(image_3, 10, 325, 400, 400); }
-    	}
-  	image_3.src = "images/3.jpg";
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
 
-  	image_4 = new Image();
-    image_4.onload = function() {
-    	if (nextPiece == 4) {
-    	ctx.drawImage(image_4, 10, 325, 400, 400); }
-    	}
-  	image_4.src = "images/4.jpg";
+    if (nextPiece == 2) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = '#ADFF2F';
+          context.fillRect(0, 380, 30, 30);
+          context.strokeRect(0, 380, 30, 30);
 
-  	image_5 = new Image();
-    image_5.onload = function() {
-    	if (nextPiece == 5) {
-    	ctx.drawImage(image_5, 10, 325, 400, 400); }
-    	}
-  	image_5.src = "images/5.jpg";
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
 
-  	image_6 = new Image();
-    image_6.onload = function() {
-    	if (nextPiece == 6) {
-    	ctx.drawImage(image_6, 10, 325, 400, 400); }
-    	}
-  	image_6.src = "images/6.jpg";
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+
+    if (nextPiece == 3) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = '#F0E68C';
+          context.fillRect(30, 320, 30, 30);
+          context.strokeRect(30, 320, 30, 30);
+
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
+
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+
+    if (nextPiece == 4) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = "#6A5ACD";
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
+
+          context.fillRect(30, 320, 30, 30);
+          context.strokeRect(30, 320, 30, 30);
+
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(60, 320, 30, 30);
+          context.strokeRect(60, 320, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+
+    if (nextPiece == 5) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = "#EE82EE";
+          context.fillRect(0, 320, 30, 30);
+          context.strokeRect(0, 320, 30, 30);
+
+          context.fillRect(30, 320, 30, 30);
+          context.strokeRect(30, 320, 30, 30);
+
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+
+    if (nextPiece == 6) {
+          var tempHolder = context.fillStyle;
+          context.fillStyle = "#191970";
+          context.fillRect(0, 350, 30, 30);
+          context.strokeRect(0, 350, 30, 30);
+
+          context.fillRect(30, 350, 30, 30);
+          context.strokeRect(30, 350, 30, 30);
+
+          context.fillRect(90, 350, 30, 30);
+          context.strokeRect(90, 350, 30, 30);
+
+          context.fillRect(60, 350, 30, 30);
+          context.strokeRect(60, 350, 30, 30);
+          context.fillStyle = tempHolder; //don't wanna set the whole thing to whatever this is
+    }
+
+
 }
